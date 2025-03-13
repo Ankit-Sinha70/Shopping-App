@@ -1,23 +1,26 @@
 import React from "react";
 import NewArrivals from "../components/NewArrivals";
+// import Advertise from "/assets/PNG/Advertise.png";
+import Advertise from "../../public/assets/PNG/Advertise.png";
+import { Button } from "../components/ui/button";
 
 const Home = () => {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative text-center bg-gray-100 py-10 flex flex-col items-center">
+      <section className="relative text-center bg-gray-100 py-10 flex flex-col items-center md:flex-row md:justify-between md:px-16">
         <img
-          src="/images/hero.jpg"
+          src={Advertise}
           alt="Fashion Model"
-          className="w-full max-w-4xl"
+          className="w-full md:w-2/2 h-auto object-cover"
         />
-        <div className="text-center mt-6">
-          <h1 className="text-5xl font-bold">50% Off</h1>
+        <div className="text-center mt-6 md:text-left md:mt-0 md:w-1/2">
+          <h1 className="text-4xl md:text-5xl font-bold">50% Off</h1>
           <p className="text-lg mt-2">On everything today</p>
-          <p className="text-sm text-gray-500">With code: FSCREATION</p>
-          <button className="mt-4 bg-black text-white px-6 py-2 rounded">
-            Get Now
-          </button>
+          <p className="text-sm text-gray-500">
+            With code: <span className="font-semibold">FSCREATION</span>
+          </p>
+          <Button className="mt-4">Get Now</Button>
         </div>
       </section>
 
