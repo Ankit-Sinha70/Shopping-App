@@ -1,8 +1,10 @@
 import React from "react";
 import NewArrivals from "../components/NewArrivals";
 // import Advertise from "/assets/PNG/Advertise.png";
-import Advertise from "../../public/assets/PNG/Advertise.png";
+import Advertise from "/assets/PNG/Advertise.png";
 import { Button } from "../components/ui/button";
+import Testimonials from "../components/Testimonials";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -25,25 +27,14 @@ const Home = () => {
       </section>
 
       {/* New Arrivals */}
-      <section className="py-10">
+      <section className=" relative top-20 py-10">
         <NewArrivals />
       </section>
 
       {/* Testimonials */}
-      <section className="py-10 bg-gray-50">
-        <h2 className="text-3xl font-semibold text-center">Testimonials</h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-7xl mx-auto mt-6">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="p-4 bg-white shadow rounded text-center">
-              <p className="text-sm">
-                The point of using Lorem Ipsum is that it has a more-or-less
-                normal distribution of letters.
-              </p>
-              <p className="font-bold mt-2">Customer {i + 1}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <div className="py-10">
+      <Testimonials />
+      </div>
     </div>
   );
 };

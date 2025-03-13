@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import MarkJacob from "../../public/assets/PNG/BeFunky-design.png";
 import Shoes3 from "../../public/assets/PNG/shoes3.png";
 import Shoes1 from "../../public/assets/PNG/shoes1.png";
+import Shoes2 from "../../public/assets/PNG/shoes2.png";
 import tShirt from "../../public/assets/PNG/T-shirt.png";
 
 const NewArrivals = () => {
@@ -43,19 +44,19 @@ const NewArrivals = () => {
       discount: "50% Off",
       description: "On everything today",
       code: "FSCREATION",
-      image: "/assets/PNG/discount1.png", // Ensure correct image path
+      image: Shoes3, // Ensure correct image path
     },
     {
       discount: "70% Off",
       description: "On everything today",
       code: "FSCREATION",
-      image: "/assets/PNG/discount2.png", // Ensure correct image path
+      image: Shoes3, // Ensure correct image path
     },
     {
       discount: "60% Off",
       description: "On Fitness Kits Today",
       code: "FSCREATION",
-      image: "/assets/PNG/discount3.png", // Ensure correct image path
+      image: Shoes2, // Ensure correct image path
     },
   ];
 
@@ -91,8 +92,8 @@ const NewArrivals = () => {
   };
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-center">New Arrivals</h2>
+    <div className="p-6 max-w-10xl mx-auto">
+      <h2 className="text-2xl font-bold mb-6 text-left">New Arrivals</h2>
 
       {/* Product Slider */}
       <Slider {...settings} className="mb-10">
@@ -126,47 +127,62 @@ const NewArrivals = () => {
         {discounts.slice(0, 2).map((offer, index) => (
           <Card
             key={index}
-            className="p-6 flex flex-col justify-between rounded-lg shadow-md border border-gray-200 relative overflow-hidden"
+            className={`p-6 flex ${
+              index === 2 ? "lg:col-span-3 flex-row" : "flex-row"
+            } absolute p-6 flex flex-row justify-around items-center rounded-lg shadow-md border border-gray-200 relative overflow-hidden !bg-gray-100
+         ${
+           index === 0
+             ? "bg-gray-100"
+             : index === 1
+             ? "bg-gray-400"
+             : "bg-gray-500"
+         }`}
           >
-            <div>
+            {/* Left Side - Text */}
+            <div className="flex-2 relative left-40">
               <h3 className="text-3xl font-bold">{offer.discount}</h3>
               <p className="text-gray-600 text-lg">{offer.description}</p>
               <p className="text-gray-500 text-sm mt-1">
                 With code: <span className="font-semibold">{offer.code}</span>
               </p>
-              <Button className="mt-3 bg-black text-white px-4 py-2 rounded-md">
+              <Button className="mt-3 bg-black text-white px-4 py-2 border border-black rounded-md text-lg">
                 Get Now
               </Button>
             </div>
-            <div className="absolute top-3 right-3 w-20 h-20 md:w-24 md:h-24">
+
+            {/* Right Side - Image */}
+            <div className=" relative right-20 w-2/5 h-full flex justify-end items-center">
               <img
                 src={offer.image}
                 alt={offer.discount}
-                className="w-full h-full object-contain"
+                className="h-full w-[600px] object-cover rounded-r-lg"
               />
             </div>
           </Card>
         ))}
 
         {/* Large Wide Discount Card */}
-        <Card className="lg:col-span-3 p-6 flex flex-col md:flex-row items-center justify-between rounded-lg shadow-md border border-gray-200 relative overflow-hidden bg-gray-100">
-          <div className="text-center md:text-left">
-            <h3 className="text-4xl font-bold">60% Off</h3>
-            <p className="text-gray-600 text-xl">On Fitness Kits Today</p>
-            <p className="text-gray-500 text-sm mt-1">
-              With code: <span className="font-semibold">FSCREATION</span>
-            </p>
-            <Button className="mt-3 bg-black text-white px-5 py-3 rounded-md text-lg">
-              Get Now
-            </Button>
-          </div>
-          <div className="w-48 h-auto mt-4 md:mt-0 md:ml-6">
+        <Card className="absolute lg:col-span-3 p-6 flex flex-col lg:flex-row items-center !bg-gray-100 justify-between rounded-lg shadow-md border border-gray-200 relative overflow-hidden bg-gray-200">
+          {/* Left Side - Discount Text */}
+          <div className="flex-[0.4] relative left-100 flex justify-start items-center">
             <img
               src={discounts[2].image}
               alt={discounts[2].discount}
-              className="w-full h-full object-contain"
+              className="w-[220px] h-[350px] object-contain"
             />
           </div>
+          <div className="flex-[0.6] relative left-80 text-center lg:text-left">
+            <h3 className="text-4xl font-bold">60% Off</h3>
+            <p className="text-gray-600 text-lg">On Fitness Kits Today</p>
+            <p className="text-gray-500 text-sm">
+              With code: <span className="font-semibold">FSCREATION</span>
+            </p>
+            <Button className="mt-2 bg-black text-white px-5 py-2 rounded-3xl text-lg">
+              Get Now
+            </Button>
+          </div>
+
+          {/* Right Side - Image with Balanced Size */}
         </Card>
       </div>
     </div>
