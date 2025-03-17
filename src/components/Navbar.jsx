@@ -14,11 +14,11 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="flex justify-between items-center px-8 gap-8 py-4 bg-white shadow-md">
+    <nav className="flex justify-between items-center px-8 py-4 bg-white shadow-md">
       <Link
         to="/"
-        className="text-2xl font-logo font-bold"
-        style={{ fontFamily: "cursive" }}
+        className="text-5xl font-logo font-bold"
+        style={{fontFamily:"Italianno", fontWeight:"500" }}
       >
         Fashions
       </Link>

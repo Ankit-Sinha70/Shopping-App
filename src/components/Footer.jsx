@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <div className="bg-black text-white py-10 mt-30 pt-30">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 px-6">
         
         {/* Resources Section */}
         <div>
@@ -34,12 +34,8 @@ export default function Footer() {
             <li><a href="#">Sustainability</a></li>
           </ul>
         </div>
-      </div>
-
-      {/* Footer Bottom Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-6 mt-8">
+        <p className="text-8xl font-cursive" style={{fontFamily:"Italianno", fontWeight:"500"}}>Fashions</p><br/>
         <p className="text-gray-400">Privacy Policy | Terms of Use</p>
-        <p className="text-2xl font-cursive">Fashions</p>
       </div>
     </div>
   );

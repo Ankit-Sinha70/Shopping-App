@@ -10,6 +10,7 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState("black");
   const [selectedSize, setSelectedSize] = useState("M");
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0); // Tracks which image is displayed
 
   const product = {
     name: "Roller Rabbit",
@@ -17,7 +18,7 @@ const ProductDetails = () => {
     description:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero illum dicta doloribus, beatae quia praesentium commodi eos nihil, fugit quod magni tempore, repellendus sunt eum suscipit! Dolorem vel est necessitatibus.",
     price: "$198.00",
-    image: Woman1,
+    images: [Woman1, Woman4, Woman1, Woman4], // Image list for dots
     colors: ["black", "orange", "green"],
     sizes: ["S", "M", "L", "XL", "XXL"],
   };
@@ -52,13 +53,30 @@ const ProductDetails = () => {
   return (
     <div className="p-6 md:p-12 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
+        {/* Product Image with Dot Navigation */}
+        <div className="flex flex-col items-center">
           <img
-            src={product.image}
+            src={product.images[selectedImageIndex]}
             alt={product.name}
             className="w-full h-122 object-contain rounded-lg bg-gray-200"
           />
+
+          {/* Dot Navigation */}
+          <div className="flex justify-center gap-2 mt-4">
+            {product.images.map((_, index) => (
+              <button
+                key={index}
+                className={`w-3 h-2 rounded-full cursor-pointer ${
+                  selectedImageIndex === index
+                    ? "bg-black"
+                    : "bg-gray-300 hover:bg-gray-400"
+                }`}
+                onClick={() => setSelectedImageIndex(index)}
+              />
+            ))}
+          </div>
         </div>
+
         {/* Product Details */}
         <div>
           <h1 className="text-3xl font-bold">{product.name}</h1>
@@ -73,7 +91,7 @@ const ProductDetails = () => {
           </div>
           <p className="text-2xl font-bold mt-4">{product.price}</p>
           <h4 className="text-2xl font-bold mt-4">Description</h4>
-          <p className="text-lg text-gray-600">{product.description}</p>
+          <p className="text-lg text-gray-400">{product.description}</p>
 
           <div className="mt-4 flex items-center gap-8">
             {/* Color Selection */}
@@ -84,7 +102,9 @@ const ProductDetails = () => {
                   <button
                     key={color}
                     className={`w-8 h-8 rounded-full border-2 ${
-                      selectedColor === color ? "bg-black" : "border-gray-300"
+                      selectedColor === color
+                        ? "border-black"
+                        : "border-gray-300"
                     }`}
                     style={{ backgroundColor: color }}
                     onClick={() => setSelectedColor(color)}
@@ -142,7 +162,7 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      {/* Related Items */}
+      {/* Related Items (Unchanged) */}
       <h2 className="text-2xl font-bold mt-12">Related Items</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
         {relatedProducts.map((item, index) => (
@@ -158,9 +178,6 @@ const ProductDetails = () => {
           </div>
         ))}
       </div>
-
-      {/* Footer */}
-      {/* <Footer/> */}
     </div>
   );
 };
