@@ -14,7 +14,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="flex justify-between items-center px-8 py-4 bg-white shadow-md">
+    <nav className="flex justify-between items-center px-8 py-4 bg-white shadow-md gap-9">
       <Link
         to="/"
         className="text-5xl font-logo font-bold"
@@ -22,7 +22,7 @@ export default function Navbar() {
       >
         Fashions
       </Link>
-      <div className="hidden md:flex gap-10 text-gray-400 ml-auto">
+      <div className="hidden md:flex gap-10 text-gray-400 ml-auto gap-5">
         {navLinks.map((link) => (
           <Link
             key={link.to}
