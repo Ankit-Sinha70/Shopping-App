@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import SignUpPage from "./pages/SignUpPage";
 import Categories from "./pages/Categories";
 import Women from "./pages/Women";
+import CartPage from "./pages/CartPage";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/women" element={<Women />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/" element={<SignUpPage />} />
       </Routes>
       <Footer />
