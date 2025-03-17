@@ -8,7 +8,7 @@ export default function Navbar() {
         Fashions
       </Link>
       <div className="hidden md:flex gap-8 text-gray-600 ml-auto">
-        <Link to="/" className="font-semibold text-black">
+        <Link to="/home" className="font-semibold text-black">
           Home
         </Link>
         <Link to="/men" className="hover:text-black">
