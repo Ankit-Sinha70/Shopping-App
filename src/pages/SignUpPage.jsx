@@ -25,7 +25,7 @@ const SignUpPage = () => {
       </div>
 
       {/* Overlay Content */}
-      <div className="relative z-10 w-full max-w-md mx-auto p-4 sm:p-6 md:p-8 bg-transparent bg-opacity-0 rounded-lg shadow-md border border-gray-600 backdrop-blur-sm">
+      <div className="relative z-10 w-full max-w-xl mx-auto p-4 sm:p-6 md:p-8 bg-transparent bg-opacity-0 rounded-lg shadow-md border border-gray-600 backdrop-blur-sm">
         <button
           onClick={() => navigate("/")}
           className="absolute right-4 top-4 text-gray-400 hover:text-white"

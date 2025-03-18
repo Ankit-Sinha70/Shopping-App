@@ -18,7 +18,7 @@ const WelcomeScreen = () => {
       {/* Overlay Content */}
       <div className="relative z-10 text-center text-white px-6 sm:px-10 md:px-16 lg:px-20">
         <h1
-          className="text-5xl sm:text-6xl md:text-7xl font-bold italic"
+          className="text-6xl sm:text-6xl md:text-7xl font-bold italic"
           style={{ fontFamily: "Italianno", fontWeight: "500" }}
         >
           Fashions
@@ -32,12 +32,15 @@ const WelcomeScreen = () => {
 
         {/* Buttons */}
         <div className="mt-70 space-y-6 flex flex-col sm:flex-row sm:space-y-0 sm:space-x-4">
-          <button onClick={() => navigate("/login")} className="w-64 py-3 bg-white text-black text-lg font-semibold rounded-full">
+          <button
+            onClick={() => navigate("/login")}
+            className="w-64 py-3 hover:bg-lime-400 hover:text-black transition text-white text-lg font-semibold rounded-full border border-lime-400"
+          >
             Login
           </button>
           <button
             onClick={() => navigate("/signUp")}
-            className="w-64 py-3 border border-white text-white text-lg font-semibold rounded-full hover:bg-white hover:text-black transition"
+            className="w-64 py-3 border border-lime-400 text-white text-lg font-semibold rounded-full hover:bg-lime-400 hover:text-black transition"
           >
             Sign Up
           </button>
