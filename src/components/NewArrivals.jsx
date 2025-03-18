@@ -44,7 +44,7 @@ const NewArrivals = () => {
       discount: "50% Off",
       description: "On everything today",
       code: "FSCREATION",
-      image: Shoes3, // Ensure correct image path
+      image: Shoes2, // Ensure correct image path
     },
     {
       discount: "70% Off",
@@ -56,7 +56,7 @@ const NewArrivals = () => {
       discount: "60% Off",
       description: "On Fitness Kits Today",
       code: "FSCREATION",
-      image: Shoes2, // Ensure correct image path
+      image: Shoes3, // Ensure correct image path
     },
   ];
 
@@ -139,7 +139,7 @@ const NewArrivals = () => {
          }`}
           >
             {/* Left Side - Text */}
-            <div className="flex-2 relative left-40">
+            <div className="flex-2 relative left-1">
               <h3 className="text-3xl font-bold">{offer.discount}</h3>
               <p className="text-gray-600 text-lg">{offer.description}</p>
               <p className="text-gray-500 text-sm mt-1">
@@ -151,7 +151,7 @@ const NewArrivals = () => {
             </div>
 
             {/* Right Side - Image */}
-            <div className=" relative right-20 w-2/5 h-full flex justify-end items-center">
+            <div className=" relative right-5 w-2/5 h-full flex justify-end items-center">
               <img
                 src={offer.image}
                 alt={offer.discount}
@@ -162,27 +162,32 @@ const NewArrivals = () => {
         ))}
 
         {/* Large Wide Discount Card */}
-        <Card className="absolute lg:col-span-3 p-6 flex flex-col lg:flex-row items-center !bg-gray-100 justify-between rounded-lg shadow-md border border-gray-200 relative overflow-hidden bg-gray-200">
-          {/* Left Side - Discount Text */}
-          <div className="flex-[0.4] relative left-100 flex justify-start items-center">
+        <Card className="relative lg:col-span-3 p-6 flex flex-col lg:flex-row items-center justify-between bg-gray-100 rounded-lg shadow-md border border-gray-200 overflow-hidden">
+          {/* Left Side - Discount Image */}
+          <div className="flex-[0.4] flex justify-center lg:justify-start items-center w-full lg:w-auto">
             <img
               src={discounts[2].image}
               alt={discounts[2].discount}
-              className="w-[220px] h-[350px] object-contain"
+              className="w-full h-full sm:w-[180px] sm:h-[280px] lg:w-[220px] lg:h-[350px] object-contain"
             />
           </div>
-          <div className="flex-[0.6] relative left-80 text-center lg:text-left">
-            <h3 className="text-4xl font-bold">60% Off</h3>
-            <p className="text-gray-600 text-lg">On Fitness Kits Today</p>
-            <p className="text-gray-500 text-sm">
-              With code: <span className="font-semibold">FSCREATION</span>
+
+          {/* Right Side - Discount Details */}
+          <div className="flex-[0.6] text-center lg:text-left mt-4 lg:mt-0">
+            <h3 className="text-3xl sm:text-4xl font-bold text-gray-800">
+              60% Off
+            </h3>
+            <p className="text-gray-600 text-lg sm:text-xl mt-1">
+              On Fitness Kits Today
             </p>
-            <Button className="mt-2 bg-black text-white px-5 py-2 rounded-3xl text-lg">
+            <p className="text-gray-500 text-sm sm:text-md mt-1">
+              With code:{" "}
+              <span className="font-semibold text-black">FSCREATION</span>
+            </p>
+            <Button className="mt-4 bg-black text-white px-5 py-2 rounded-3xl text-lg hover:bg-gray-900 transition">
               Get Now
             </Button>
           </div>
-
-          {/* Right Side - Image with Balanced Size */}
         </Card>
       </div>
     </div>
