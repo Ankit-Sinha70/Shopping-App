@@ -83,7 +83,7 @@ const SignUpPage = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full px-4 py-2.5 sm:py-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:border-transparent transition-all"
+              className="w-full px-4 py-2.5 sm:py-3 bg-transparent border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:border-transparent transition-all"
             />
           </div>
           <div className="group">
@@ -93,8 +93,8 @@ const SignUpPage = () => {
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
-                placeholder="Enter your password"
-                className="w-full px-4 py-2.5 sm:py-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:border-transparent transition-all"
+                placeholder="Confirm your password"
+                className="w-full px-4 py-2.5 sm:py-3 bg-transparent border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:border-transparent transition-all"
               />
               <button
                 type="button"
@@ -113,7 +113,7 @@ const SignUpPage = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Confirm your password"
-                className="w-full px-4 py-2.5 sm:py-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:border-transparent transition-all"
+                className="w-full px-4 py-2.5 sm:py-3 bg-transparent border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:border-transparent transition-all"
               />
               <button
                 type="button"
@@ -142,7 +142,10 @@ const SignUpPage = () => {
         </div>
 
         {/* Sign Up Button */}
-        <button className="w-full px-4 py-2.5 sm:py-3 mt-6 bg-lime-300 text-black font-medium rounded-lg hover:bg-lime-400 transition-colors duration-200">
+        <button
+          onClick={() => navigate("/login")}
+          className="w-full px-4 py-2.5 sm:py-3 mt-6 bg-lime-300 text-black font-medium rounded-lg hover:bg-lime-400 transition-colors duration-200"
+        >
           Sign Up
         </button>
       </div>

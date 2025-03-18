@@ -138,7 +138,10 @@ const LogInPage = () => {
           </div>
 
           {/* Login Button */}
-          <button className="w-full px-4 py-3 mt-6 bg-lime-300 text-black font-medium rounded-lg hover:bg-lime-400 transition-colors duration-200">
+          <button
+            onClick={() => navigate("/welcomeScreen2")}
+            className="w-full px-4 py-3 mt-6 bg-lime-300 text-black font-medium rounded-lg hover:bg-lime-400 transition-colors duration-200"
+          >
             Login
           </button>
         </div>

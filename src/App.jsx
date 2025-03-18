@@ -9,6 +9,7 @@ import CartPage from "./pages/CartPage";
 import ProfilePage from "./pages/ProfilePage";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import LogInPage from "./pages/LogInPage";
+import WelcomeScreen2 from "./pages/WelcomeScreen2";
 
 function App() {
   return (
@@ -76,6 +77,7 @@ function App() {
         />
         <Route path="/" element={<WelcomeScreen />} />
         <Route path="/login" element={<LogInPage />} />
+        <Route path="/welcomeScreen2" element={<WelcomeScreen2 />} />
       </Routes>
       
     </div>
