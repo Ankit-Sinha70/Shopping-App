@@ -94,107 +94,221 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-8">
-      <nav className="border-b pb-4 flex space-x-6 text-gray-600 gap-15">
+    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      {/* Mobile Navigation - Horizontally Scrollable Tabs */}
+      <nav className="md:hidden pb-3 mb-4 overflow-x-auto flex whitespace-nowrap">
         <a
           href="#"
-          className={activeTab === "account" ? "font-semibold text-black" : ""}
-          onClick={() => setActiveTab("account")}
+          className={`mr-4 pb-2 text-sm flex-shrink-0 ${
+            activeTab === "account"
+              ? "font-semibold text-black border-b-2 border-black"
+              : "text-gray-600"
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveTab("account");
+          }}
         >
           My Account
         </a>
         <a
           href="#"
-          className={activeTab === "orders" ? "font-semibold text-black" : ""}
-          onClick={() => setActiveTab("orders")}
+          className={`mr-4 pb-2 text-sm flex-shrink-0 ${
+            activeTab === "orders"
+              ? "font-semibold text-black border-b-2 border-black"
+              : "text-gray-600"
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveTab("orders");
+          }}
         >
           My Orders
         </a>
         <a
           href="#"
-          className={
-            activeTab === "addresses" ? "font-semibold text-black" : ""
-          }
-          onClick={() => setActiveTab("addresses")}
+          className={`mr-4 pb-2 text-sm flex-shrink-0 ${
+            activeTab === "addresses"
+              ? "font-semibold text-black border-b-2 border-black"
+              : "text-gray-600"
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveTab("addresses");
+          }}
         >
           My Addresses
         </a>
         <a
           href="#"
-          className={activeTab === "wallet" ? "font-semibold text-black" : ""}
-          onClick={() => setActiveTab("wallet")}
+          className={`mr-4 pb-2 text-sm flex-shrink-0 ${
+            activeTab === "wallet"
+              ? "font-semibold text-black border-b-2 border-black"
+              : "text-gray-600"
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveTab("wallet");
+          }}
         >
           My Wallet
         </a>
         <a
           href="#"
-          className={activeTab === "wishlist" ? "font-semibold text-black" : ""}
-          onClick={() => setActiveTab("wishlist")}
+          className={`mr-4 pb-2 text-sm flex-shrink-0 ${
+            activeTab === "wishlist"
+              ? "font-semibold text-black border-b-2 border-black"
+              : "text-gray-600"
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveTab("wishlist");
+          }}
+        >
+          My Wishlist
+        </a>
+      </nav>
+
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex border-b pb-4 space-x-6 text-gray-600 overflow-x-auto">
+        <a
+          href="#"
+          className={`whitespace-nowrap ${
+            activeTab === "account" ? "font-semibold text-black" : ""
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveTab("account");
+          }}
+        >
+          My Account
+        </a>
+        <a
+          href="#"
+          className={`whitespace-nowrap ${
+            activeTab === "orders" ? "font-semibold text-black" : ""
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveTab("orders");
+          }}
+        >
+          My Orders
+        </a>
+        <a
+          href="#"
+          className={`whitespace-nowrap ${
+            activeTab === "addresses" ? "font-semibold text-black" : ""
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveTab("addresses");
+          }}
+        >
+          My Addresses
+        </a>
+        <a
+          href="#"
+          className={`whitespace-nowrap ${
+            activeTab === "wallet" ? "font-semibold text-black" : ""
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveTab("wallet");
+          }}
+        >
+          My Wallet
+        </a>
+        <a
+          href="#"
+          className={`whitespace-nowrap ${
+            activeTab === "wishlist" ? "font-semibold text-black" : ""
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            setActiveTab("wishlist");
+          }}
         >
           My Wishlist
         </a>
       </nav>
 
       {activeTab === "account" && (
-        <div>
-          <h2 className="text-3xl font-bold mt-6">Account</h2>
-          <div className="flex gap-4 mt-4 justify-end">
-            <button className="border px-4 py-2 rounded-full text-sm">
+        <div className="mt-4">
+          <h2 className="text-2xl sm:text-3xl font-bold mt-4">Account</h2>
+          <div className="flex gap-2 sm:gap-4 mt-4 justify-end">
+            <button className="border px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm">
               Discard
             </button>
-            <button className="bg-black text-white px-4 py-2 rounded-full text-sm">
+            <button className="bg-black text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm">
               Update Info
             </button>
           </div>
-          <p className="text-gray-600 mb-10">
+          <p className="text-gray-600 mb-6 sm:mb-10 text-sm sm:text-base">
             View and edit your personal info below
           </p>
-          <div className="border-t border-gray-300 pt-6 mb-6">
-            <h3 className="text-2xl font-semibold mb-4">Personal Info</h3>
-            <p className="text-gray-600 mb-4">
+          <div className="border-t border-gray-300 pt-4 sm:pt-6 mb-6">
+            <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4">
+              Personal Info
+            </h3>
+            <p className="text-gray-600 mb-4 text-sm sm:text-base">
               Update your personal information
             </p>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-gray-700">First Name</label>
+                <label className="text-gray-700 text-sm sm:text-base">
+                  First Name
+                </label>
                 <input type="text" className="border p-2 rounded w-full mt-1" />
               </div>
               <div>
-                <label className="text-gray-700">Last Name</label>
+                <label className="text-gray-700 text-sm sm:text-base">
+                  Last Name
+                </label>
                 <input type="text" className="border p-2 rounded w-full mt-1" />
               </div>
-              <div className="grid-cols-2">
-                <label className="text-gray-700">Phone Number</label>
+              <div className="grid-cols-2   ">
+                <label className="text-gray-700 text-sm sm:text-base">
+                  Phone Number
+                </label>
                 <input
                   type="number"
                   className="border p-2 rounded w-full mt-1"
                 />
               </div>
             </div>
-            <div className="flex gap-4 mt-4 justify-end">
-              <button className="border px-4 py-2 rounded-full text-sm">
+            <div className="flex gap-2 sm:gap-4 mt-4 justify-end">
+              <button className="border px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm">
                 Discard
               </button>
-              <button className="bg-black text-white px-4 py-2 rounded-full text-sm">
+              <button className="bg-black text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm">
                 Update Info
               </button>
             </div>
+
             {/* Login Info Section */}
-            <div className="border-t border-gray-300 mt-10">
-              <h3 className="text-2xl font-semibold mt-8">Login Info</h3>
-              <p className="text-gray-600 mb-2 leading-10">
+            <div className="border-t border-gray-300 mt-6 sm:mt-10 pt-4 sm:pt-6">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-2 leading-15">
+                Login Info
+              </h3>
+              <p className="text-gray-600 mb-2 text-sm sm:text-base leading-12">
                 Update your personal information
               </p>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm sm:text-base">
                 Login Email:
                 <br />
                 <span className="font-semibold">fscreation@gmail.com</span>
               </p>
-              <p className="text-black-600 cursor-pointer underline">
+              <p className="text-black-600 cursor-pointer underline text-sm sm:text-base leading-10">
                 Change Email
               </p>
-              <p className="text-gray-600 mt-2 leading-18">Password: ••••••</p>
-              <p className="text-black-600 cursor-pointer underline leading-1">
+              <p className="text-gray-600 mt-2 text-sm sm:text-base leading-10">
+                Password:
+              </p>
+              <p className="text-gray-600 mt-2 text-sm sm:text-base leading-2">
+              ••••••
+              </p>
+              <p className="text-black-600 cursor-pointer underline text-sm sm:text-base leading-12">
                 Change Password
               </p>
             </div>
@@ -203,13 +317,13 @@ const ProfilePage = () => {
       )}
 
       {activeTab === "orders" && (
-        <div className="border-t pt-6 mb-6">
-          <h3 className="text-2xl font-semibold mb-4">My Orders</h3>
-          <div className="flex space-x-6 border-b pb-2">
+        <div className="border-t pt-4 sm:pt-6 mb-6">
+          <h3 className="text-xl sm:text-2xl font-semibold mb-4">My Orders</h3>
+          <div className="flex space-x-4 border-b pb-2 overflow-x-auto">
             {Object.keys(ordersData).map((tab) => (
               <span
                 key={tab}
-                className={`cursor-pointer ${
+                className={`cursor-pointer whitespace-nowrap text-sm sm:text-base ${
                   orderTab === tab
                     ? "font-semibold border-b-2 border-black pb-1"
                     : "text-gray-500"
@@ -223,40 +337,50 @@ const ProfilePage = () => {
           {ordersData[orderTab].map((order) => (
             <div
               key={order.id}
-              className="border p-4 mt-4 rounded-lg shadow-sm"
+              className="border p-3 sm:p-4 mt-4 rounded-lg shadow-sm"
             >
-              <p className="text-gray-700 font-semibold">
+              <p className="text-gray-700 font-semibold text-sm sm:text-base">
                 Order no: #{order.id}
               </p>
-              <p className="text-gray-500 text-sm">Order Date: {order.date}</p>
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-500 text-xs sm:text-sm">
+                Order Date: {order.date}
+              </p>
+              <p className="text-gray-500 text-xs sm:text-sm">
                 Estimated Delivery Date: {order.estimatedDelivery}
               </p>
-              <p className="text-gray-700 font-semibold mt-2">
+              <p className="text-gray-700 font-semibold mt-2 text-sm sm:text-base">
                 Order Status: {order.status}
               </p>
-              <p className="text-gray-700 text-sm">Method: {order.method}</p>
+              <p className="text-gray-700 text-xs sm:text-sm">
+                Method: {order.method}
+              </p>
               {order.items.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center border p-4 mt-2 rounded-lg"
+                  className="flex flex-col sm:flex-row sm:items-center border p-3 sm:p-4 mt-2 rounded-lg"
                 >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-20 h-20 object-cover rounded-lg"
-                  />
-                  <div className="ml-4">
-                    <p className="font-semibold">{item.name}</p>
-                    <p className="text-gray-500 text-sm">
-                      Colour: {item.color}
-                    </p>
-                    <p className="text-gray-500 text-sm">Qty: {item.qty}</p>
-                    <p className="text-gray-700 font-semibold">
-                      Total: {item.total}
-                    </p>
+                  <div className="flex items-center">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg"
+                    />
+                    <div className="ml-3 sm:ml-4">
+                      <p className="font-semibold text-sm sm:text-base">
+                        {item.name}
+                      </p>
+                      <p className="text-gray-500 text-xs sm:text-sm">
+                        Colour: {item.color}
+                      </p>
+                      <p className="text-gray-500 text-xs sm:text-sm">
+                        Qty: {item.qty}
+                      </p>
+                      <p className="text-gray-700 font-semibold text-sm sm:text-base">
+                        Total: {item.total}
+                      </p>
+                    </div>
                   </div>
-                  <button className="ml-auto bg-teal-500 text-white px-4 py-2 rounded-full text-sm">
+                  <button className="mt-3 sm:mt-0 sm:ml-auto bg-teal-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm w-full sm:w-auto">
                     View Detail
                   </button>
                 </div>
@@ -267,18 +391,22 @@ const ProfilePage = () => {
       )}
 
       {activeTab === "addresses" && (
-        <div className="border-t pt-6 mb-6">
-          <h3 className="text-2xl font-semibold mb-4">My Addresses</h3>
+        <div className="border-t pt-4 sm:pt-6 mb-6">
+          <h3 className="text-xl sm:text-2xl font-semibold mb-4">
+            My Addresses
+          </h3>
           {addresses.length === 0 ? (
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm sm:text-base">
               No saved addresses. Add a new address to speed up checkout.
             </p>
           ) : (
-            <ul className="mt-4">
+            <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {addresses.map((address, index) => (
-                <li key={index} className="border p-4 rounded-lg mb-2">
-                  <p className="font-semibold">{address.name}</p>
-                  <p>
+                <li key={index} className="border p-3 sm:p-4 rounded-lg">
+                  <p className="font-semibold text-sm sm:text-base">
+                    {address.name}
+                  </p>
+                  <p className="text-sm sm:text-base">
                     {address.street}, {address.city}, {address.zip}
                   </p>
                 </li>
@@ -286,17 +414,20 @@ const ProfilePage = () => {
             </ul>
           )}
           <button
-            className="bg-black text-white px-4 py-2 rounded-full text-sm mt-4"
+            className="bg-black text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm mt-4"
             onClick={() => setIsModalOpen(true)}
           >
             Add Address
           </button>
         </div>
       )}
+
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-transparent bg-opacity-0">
-          <div className="bg-gray-100 p-10 mt-20 rounded-lg w-1/3">
-            <h2 className="text-xl font-semibold mb-4">Add New Address</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white p-4 sm:p-6 rounded-lg w-full max-w-md">
+            <h2 className="text-lg sm:text-xl font-semibold mb-4">
+              Add New Address
+            </h2>
             <input
               type="text"
               placeholder="Full Name"
@@ -333,15 +464,15 @@ const ProfilePage = () => {
                 setNewAddress({ ...newAddress, zip: e.target.value })
               }
             />
-            <div className="flex gap-4 mt-4 justify-end">
+            <div className="flex gap-2 sm:gap-4 mt-4 justify-end">
               <button
-                className="border px-4 py-2 rounded-full text-sm"
+                className="border px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm"
                 onClick={() => setIsModalOpen(false)}
               >
                 Cancel
               </button>
               <button
-                className="bg-black text-white px-4 py-2 rounded-full text-sm"
+                className="bg-black text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm"
                 onClick={handleAddAddress}
               >
                 Save Address
@@ -352,21 +483,23 @@ const ProfilePage = () => {
       )}
 
       {activeTab === "wallet" && (
-        <div className="border-t pt-6 mb-6">
-          <h3 className="text-2xl font-semibold mb-4">My Wallet</h3>
-          <p className="text-gray-600">
+        <div className="border-t pt-4 sm:pt-6 mb-6">
+          <h3 className="text-xl sm:text-2xl font-semibold mb-4">My Wallet</h3>
+          <p className="text-gray-600 text-sm sm:text-base">
             Available Balance: <span className="font-semibold">$0.00</span>
           </p>
-          <button className="bg-black text-white px-4 py-2 rounded-full text-sm mt-4">
+          <button className="bg-black text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm mt-4">
             Add Funds
           </button>
         </div>
       )}
 
       {activeTab === "wishlist" && (
-        <div className="border-t pt-6 mb-6">
-          <h3 className="text-2xl font-semibold mb-4">My Wishlist</h3>
-          <p className="text-gray-600">
+        <div className="border-t pt-4 sm:pt-6 mb-6">
+          <h3 className="text-xl sm:text-2xl font-semibold mb-4">
+            My Wishlist
+          </h3>
+          <p className="text-gray-600 text-sm sm:text-base">
             Your wishlist is empty. Start adding your favorite products.
           </p>
         </div>

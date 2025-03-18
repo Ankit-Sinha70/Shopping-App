@@ -64,7 +64,6 @@ const CartPage = () => {
   return (
     <div className="w-full">
       <div className="px-4 md:px-12 py-6 max-w-8xl mx-auto">
-        {/* Parent Flex Container */}
         <div className="flex flex-col md:flex-row gap-6 md:gap-12 ">
           {/* Cart Items Section */}
           <div className="flex-[2] space-y-6 ">
@@ -143,7 +142,7 @@ const CartPage = () => {
                 Order Summary
               </h1>
             </>
-            <p className="border-b-[1px] border-gray-300 mr-55">
+            <p className="border-b-[1px] border-gray-300 mr-25">
               Enter Promo Or Gift Card
             </p>
             <div className="flex justify-between text-lg mb-2 leading-15">

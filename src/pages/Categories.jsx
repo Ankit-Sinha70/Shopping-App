@@ -151,7 +151,7 @@ const Categories = () => {
       </div>
 
       {/* Product Grid */}
-      <div className="lg:w-2/3 w-full">
+      <div className="lg:w-3/4 w-full">
         <div className="flex justify-between mb-4">
           <button className="text-gray-600">Hide Filters</button>
 
@@ -213,20 +213,20 @@ const Categories = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
           {products.map((product, index) => (
-            <div key={index} className="p-4 flex flex-col items-center">
-              <div className="bg-gray-200 rounded-lg shadow-lg relative w-40 md:w-52 h-48 flex items-center justify-center">
+            <div key={index} className="p-2 flex flex-col items-center">
+              <div className="bg-gray-200 rounded-lg shadow-lg relative w-40 md:w-full h-48 lg:h-64 flex items-center justify-center">
                 <img
                   src={product.image}
                   alt={product.name}
                   className="h-full w-full object-cover rounded-lg"
                 />
                 <button className="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md !bg-black">
-                  <Heart className="text-white " />
+                  <Heart className="text-white" />
                 </button>
               </div>
-              <div className="mt-4 text-center w-40 md:w-52">
+              <div className="mt-4 text-center w-full">
                 <h3 className="font-bold">{product.name}</h3>
                 <p className="text-gray-600">{product.description}</p>
                 <p className="font-bold">{product.price}</p>
