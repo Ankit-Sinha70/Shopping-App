@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaGoogle, FaFacebook, FaEye, FaEyeSlash } from "react-icons/fa";
+import { IoLogoApple } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import BackgroundImage from "../../public/assets/JPG/background2.jpg";
 import { X } from "lucide-react";
@@ -72,6 +73,10 @@ const LogInPage = () => {
               <FaFacebook className="text-xl" />{" "}
               <span>Continue with Facebook</span>
             </button>
+            <button className="w-full flex items-center justify-center px-4 py-3 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors duration-200 space-x-3 text-lime-300">
+              <IoLogoApple className="text-xl" />{" "}
+              <span>Continue with Apple</span>
+            </button>
           </div>
 
           {/* Divider */}
@@ -139,7 +144,7 @@ const LogInPage = () => {
 
           {/* Login Button */}
           <button
-            onClick={() => navigate("/welcomeScreen2")}
+            onClick={() => navigate("/success")}
             className="w-full px-4 py-3 mt-6 bg-lime-300 text-black font-medium rounded-lg hover:bg-lime-400 transition-colors duration-200"
           >
             Login

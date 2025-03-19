@@ -10,6 +10,8 @@ import ProfilePage from "./pages/ProfilePage";
 import WelcomeScreen from "./pages/WelcomeScreen";
 import LogInPage from "./pages/LogInPage";
 import WelcomeScreen2 from "./pages/WelcomeScreen2";
+import SuccessPage from "./pages/SuccessPage";
+import NotificationComponent from "./components/Notification";
 
 function App() {
   return (
@@ -78,6 +80,8 @@ function App() {
         <Route path="/" element={<WelcomeScreen />} />
         <Route path="/login" element={<LogInPage />} />
         <Route path="/welcomeScreen2" element={<WelcomeScreen2 />} />
+        <Route path="/success" element={<SuccessPage />} />
+        <Route path="/notification" element={<NotificationComponent />} />
       </Routes>
       
     </div>

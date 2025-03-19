@@ -222,7 +222,7 @@ const Categories = () => {
                   alt={product.name}
                   className="h-full w-full object-cover rounded-lg"
                 />
-                <button className="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md !bg-black">
+                <button className="absolute top-2 right-2 p-1 rounded-full shadow-md !bg-black">
                   <Heart className="text-white" />
                 </button>
               </div>
