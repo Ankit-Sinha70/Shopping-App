@@ -1,9 +1,13 @@
 import React from "react";
 import BottomNavigation from "./BottomNavigation";
 import Avatar from "../../public/assets/PNG/avatar.png";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 import { Card } from "./ui/card";
+import { useNavigate } from "react-router-dom";
 
 const NotificationComponent = () => {
+  const navigate = useNavigate();
   const notifications = [
     {
       id: 1,
@@ -76,39 +80,13 @@ const NotificationComponent = () => {
       {/* Header */}
       <div className="flex justify-between items-center px-4 py-3 m-4">
         <div className="flex items-center">
-          <button className="p-1 bg-black rounded-full m-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
+          <button onClick={() => navigate("/home")} className="p-1 bg-black rounded-full m-2 text-white">
+            <IoArrowBackCircleSharp size={36}/>
           </button>
         </div>
         <Card className="rounded-full">
           <button className="p-1 rounded-full h-6 w-6 flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-              />
-            </svg>
+            <HiOutlineDotsVertical  size={32}/>
           </button>
         </Card>
       </div>

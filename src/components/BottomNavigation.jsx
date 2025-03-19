@@ -12,7 +12,7 @@ const BottomNavigation = () => {
       <button onClick={() => navigate("/home")} className="flex items-center justify-between w-24 h-12 rounded-full px-4">
         <img src={Home1} alt="Home" />
       </button>
-      <button className="flex flex-col items-center justify-center w-12 h-12">
+      <button onClick={() => navigate("/cart")} className="flex flex-col items-center justify-center w-12 h-12">
         <FaCartPlus className="w-6 h-6" />
       </button>
       <button onClick={() => navigate("/notification")} className="flex flex-col items-center justify-center w-12 h-12">
