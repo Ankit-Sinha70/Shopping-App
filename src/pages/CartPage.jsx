@@ -274,7 +274,7 @@ const CartPage = () => {
           </span>
           <span className="font-bold text-xl">${total.toFixed(2)}</span>
         </div>
-        <button className="w-full bg-black text-white py-4 rounded-full flex items-center justify-center gap-2 font-medium">
+        <button onClick={() => navigate("/placeOrder")} className="w-full bg-black text-white py-4 rounded-full flex items-center justify-center gap-2 font-medium">
           Proceed to Checkout
           <ArrowRight size={20} />
         </button>

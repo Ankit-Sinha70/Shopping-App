@@ -13,6 +13,7 @@ import WelcomeScreen2 from "./pages/WelcomeScreen2";
 import SuccessPage from "./pages/SuccessPage";
 import NotificationComponent from "./components/Notification";
 import { useEffect, useState } from "react";
+import PlaceOrderPage from "./pages/PlaceOrderPage";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -33,6 +34,7 @@ function App() {
     "/signUp",
     "/welcomeScreen2",
     "/success",
+    "/placeOrder",
   ];
 
   return (
@@ -54,6 +56,7 @@ function App() {
         <Route path="/welcomeScreen2" element={<WelcomeScreen2 />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/notification" element={<NotificationComponent />} />
+        <Route path="/placeOrder" element={<PlaceOrderPage />} />
       </Routes>
 
       {/* Display Footer on all pages except the excluded ones */}
