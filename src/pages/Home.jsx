@@ -15,13 +15,13 @@ import Avatar from "../../public/assets/PNG/avatar.png";
 import BlackBag from "../../public/assets/JPG/bags.jpg";
 import BlueSneaker from "../../public/assets/PNG/sneakers.jpg";
 import Sandals from "../../public/assets/JPG/shoes.jpg";
-
-import { FaHome } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import BottomNavigation from "../components/BottomNavigation";
+import ElectronicsPage from "./Electronics";
 
 const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -35,13 +35,17 @@ const Home = () => {
   }, []);
 
   const categories = [
-    { name: "New Arrivals", count: 208, image: newArrivals },
-    { name: "Clothes", count: 358, image: Cloths },
-    { name: "Bags", count: 160, image: Bags },
-    { name: "Shoes", count: 230, image: Shoes },
-    { name: "Electronics", count: 130, image: Electronics },
-    { name: "Jewelry", count: 87, image: Jewellary },
+    { id: 1, name: "New Arrivals", count: 208, image: newArrivals },
+    { id: 2, name: "Clothes", count: 358, image: Cloths },
+    { id: 3, name: "Bags", count: 160, image: Bags },
+    { id: 4, name: "Shoes", count: 230, image: Shoes },
+    { id: 5, name: "Electronics", count: 130, image: Electronics },
+    { id: 6, name: "Jewelry", count: 87, image: Jewellary },
   ];
+
+  const handleCategoryClick = (categoryId) => {
+    setSelectedCategory(categoryId);
+  };
 
   // Updated category buttons with state management
   const [categoryButtons, setCategoryButtons] = useState([
@@ -51,7 +55,6 @@ const Home = () => {
     { id: 4, name: "Shoes", active: false },
   ]);
 
-  // Product data organized by category
   const productsByCategory = {
     // Dresses (category ID: 1)
     1: [
@@ -81,39 +84,32 @@ const Home = () => {
     ],
   };
 
-  // State to track currently displayed products
   const [topDresses, setTopDresses] = useState(productsByCategory[1]);
 
-  // Function to handle category change
   const handleCategoryChange = (categoryId) => {
-    // Update active states
     const updatedCategories = categoryButtons.map((cat) => ({
       ...cat,
       active: cat.id === categoryId,
     }));
     setCategoryButtons(updatedCategories);
-
-    // Update displayed products
     setTopDresses(productsByCategory[categoryId]);
   };
 
-  // Promotional banners
   const promotionalBanners = [
     {
       discount: "50% Off",
       text: "On everything today",
       code: "FSCREATION",
-      image: Bags, // Placeholder for promo image
+      image: Bags,
     },
     {
       discount: "70% Off",
       text: "On everything today",
       code: "FSCREATION",
-      image: Shoes, // Placeholder for promo image
+      image: Shoes,
     },
   ];
 
-  // New arrivals products
   const newArrivalsProducts = [
     {
       name: "The Marc Jacobs",
@@ -129,7 +125,6 @@ const Home = () => {
     },
   ];
 
-  // Popular products
   const popularProducts = [
     {
       name: "Gia Borghini",
@@ -139,6 +134,10 @@ const Home = () => {
       image: Sandals,
     },
   ];
+
+  if (selectedCategory === 5) {
+    return <ElectronicsPage />;
+  }
 
   return (
     <div className="w-full">
@@ -417,13 +416,13 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Categories Grid (Original) */}
+          {/* Categories Grid - UPDATED WITH NAVIGATION */}
           <div className="grid grid-cols-2 gap-4 p-4">
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <button
-                key={index}
+                key={category.id}
                 className="relative rounded-lg overflow-hidden aspect-square w-full"
-                onClick={() => console.log(`Clicked on ${category.name}`)}
+                onClick={() => handleCategoryClick(category.id)}
               >
                 {/* Category Image */}
                 <img
