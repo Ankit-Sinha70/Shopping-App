@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Minus,
   Plus,
@@ -12,6 +12,7 @@ import Shoe from "../../public/assets/PNG/shoes1.png";
 import Backpack from "../../public/assets/PNG/BeFunky-design.png";
 import { Card } from "../components/ui/card";
 import { useNavigate } from "react-router-dom";
+import BottomNavigation from "../components/BottomNavigation";
 
 const CartPage = () => {
   const navigate = useNavigate();
@@ -49,8 +50,8 @@ const CartPage = () => {
     },
   ]);
 
-  const touchStartX = useRef(0);
-  const currentItemId = useRef(null);
+  // const touchStartX = useRef(0);
+  // const currentItemId = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -81,47 +82,47 @@ const CartPage = () => {
     );
   };
 
-  const handleTouchStart = (e, id) => {
-    touchStartX.current = e.touches[0].clientX;
-    currentItemId.current = id;
-  };
+  // const handleTouchStart = (e, id) => {
+  //   touchStartX.current = e.touches[0].clientX;
+  //   currentItemId.current = id;
+  // };
 
-  const handleTouchMove = (e) => {
-    if (!currentItemId.current) return;
-    const touchX = e.touches[0].clientX;
-    const diff = touchStartX.current - touchX;
-    const newOffset = Math.max(0, Math.min(80, diff));
-    setCartItems(
-      cartItems.map((item) =>
-        item.id === currentItemId.current
-          ? { ...item, slideOffset: newOffset }
-          : item
-      )
-    );
-  };
+  // const handleTouchMove = (e) => {
+  //   if (!currentItemId.current) return;
+  //   const touchX = e.touches[0].clientX;
+  //   const diff = touchStartX.current - touchX;
+  //   const newOffset = Math.max(0, Math.min(80, diff));
+  //   setCartItems(
+  //     cartItems.map((item) =>
+  //       item.id === currentItemId.current
+  //         ? { ...item, slideOffset: newOffset }
+  //         : item
+  //     )
+  //   );
+  // };
 
-  const handleTouchEnd = () => {
-    if (!currentItemId.current) return;
+  // const handleTouchEnd = () => {
+  //   if (!currentItemId.current) return;
 
-    setCartItems(
-      cartItems.map((item) => {
-        if (item.id === currentItemId.current) {
-          const newOffset = item.slideOffset > 40 ? 80 : 0;
-          return { ...item, slideOffset: newOffset };
-        }
-        return item;
-      })
-    );
-    currentItemId.current = null;
-  };
+  //   setCartItems(
+  //     cartItems.map((item) => {
+  //       if (item.id === currentItemId.current) {
+  //         const newOffset = item.slideOffset > 40 ? 80 : 0;
+  //         return { ...item, slideOffset: newOffset };
+  //       }
+  //       return item;
+  //     })
+  //   );
+  //   currentItemId.current = null;
+  // };
 
-  const resetAllSlides = (exceptId) => {
-    setCartItems(
-      cartItems.map((item) =>
-        item.id !== exceptId ? { ...item, slideOffset: 0 } : item
-      )
-    );
-  };
+  // const resetAllSlides = (exceptId) => {
+  //   setCartItems(
+  //     cartItems.map((item) =>
+  //       item.id !== exceptId ? { ...item, slideOffset: 0 } : item
+  //     )
+  //   );
+  // };
 
   const deleteItem = (id) => {
     setCartItems(cartItems.filter((item) => item.id !== id));
@@ -138,7 +139,10 @@ const CartPage = () => {
   const MobileLayout = () => (
     <div className="flex flex-col w-full mx-auto px-4 py-6 bg-gray-50">
       <div className="flex justify-between items-center mb-6">
-        <button onClick={() => navigate("/home")} className="p-2 bg-black text-white rounded-full">
+        <button
+          onClick={() => navigate("/home")}
+          className="p-2 bg-black text-white rounded-full"
+        >
           <ArrowLeft size={20} />
         </button>
         <h1 className="text-xl font-bold">My Cart</h1>
@@ -146,7 +150,10 @@ const CartPage = () => {
           <div className="absolute -top-2 -right-2 bg-black text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
             {cartItems.length}
           </div>
-          <button onClick={() => navigate("/cart")} className="p-2 bg-gray-100 rounded-full">
+          <button
+            onClick={() => navigate("/cart")}
+            className="p-2 bg-gray-100 rounded-full"
+          >
             <ShoppingCart size={20} />
           </button>
         </div>
@@ -154,9 +161,16 @@ const CartPage = () => {
 
       <div className="space-y-4">
         {cartItems.map((item) => (
-          <div key={item.id} className="relative overflow-hidden">
+          <div
+            key={item.id}
+            className="relative overflow-hidden rounded-2xl"
+            style={{
+              boxShadow:
+                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
+            }}
+          >
             {/* Slide container */}
-            <div
+            {/* <div
               style={{
                 transform: `translateX(-${item.slideOffset}px)`,
                 transition:
@@ -168,47 +182,47 @@ const CartPage = () => {
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
               onClick={() => resetAllSlides(item.id)}
-              className="relative"
-            >
-              <Card className="flex items-center bg-white p-4 rounded-xl shadow-sm">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-20 h-20 rounded-lg bg-gray-100 object-contain"
-                />
-                <div className="ml-4 flex-1">
-                  <h2 className="font-bold text-sm">{item.name}</h2>
-                  <p className="text-xs text-gray-500">{item.description}</p>
-                  <p className="font-bold mt-1">${item.price.toFixed(2)}</p>
-                </div>
-                <div className="flex items-center gap-2 bg-gray-100 rounded-full">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      decreaseQuantity(item.id);
-                    }}
-                    className="w-8 h-8 flex items-center justify-center rounded-full"
-                  >
-                    <Minus size={16} />
-                  </button>
-                  <span className="w-4 text-center font-medium text-sm">
-                    {item.quantity}
-                  </span>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      increaseQuantity(item.id);
-                    }}
-                    className="w-8 h-8 flex items-center justify-center rounded-full"
-                  >
-                    <Plus size={16} />
-                  </button>
-                </div>
-              </Card>
-            </div>
+              className="relative rounded-3xl"
+            > */}
+            <Card className="flex items-center bg-white p-4 rounded-xl shadow-sm">
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-20 h-20 rounded-lg bg-gray-100 object-contain"
+              />
+              <div className="ml-4 flex-1">
+                <h2 className="font-bold text-sm">{item.name}</h2>
+                <p className="text-xs text-gray-500">{item.description}</p>
+                <p className="font-bold mt-1">${item.price.toFixed(2)}</p>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-100 rounded-full">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    decreaseQuantity(item.id);
+                  }}
+                  className="w-8 h-8 flex items-center justify-center rounded-full"
+                >
+                  <Minus size={16} />
+                </button>
+                <span className="w-4 text-center font-medium text-sm">
+                  {item.quantity}
+                </span>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    increaseQuantity(item.id);
+                  }}
+                  className="w-8 h-8 flex items-center justify-center rounded-full"
+                >
+                  <Plus size={16} />
+                </button>
+              </div>
+            </Card>
+            {/* </div> */}
 
             {/* Delete button that appears when sliding */}
-            <div
+            {/* <div
               className="absolute top-0 right-0 bottom-0 flex items-center justify-center bg-red-500 text-white rounded-r-xl"
               style={{
                 width: "80px",
@@ -221,13 +235,19 @@ const CartPage = () => {
               onClick={() => deleteItem(item.id)}
             >
               <Trash2 size={24} />
-            </div>
+            </div> */}
           </div>
         ))}
       </div>
 
       {/* Promo code section */}
-      <div className="bg-white rounded-xl p-4 mt-6 shadow-sm">
+      <Card
+        className="bg-white rounded-xl p-4 mt-6"
+        style={{
+          boxShadow:
+            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
+        }}
+      >
         <div className="flex items-center">
           <input
             type="text"
@@ -238,10 +258,16 @@ const CartPage = () => {
             Apply
           </button>
         </div>
-      </div>
+      </Card>
 
       {/* Order summary */}
-      <div className="mt-6 bg-white rounded-xl p-4 shadow-sm">
+      <div
+        className="mt-6 bg-white rounded-xl p-4 shadow-sm"
+        style={{
+          boxShadow:
+            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
+        }}
+      >
         <div className="flex justify-between mb-4">
           <span className="text-gray-500">
             Total ({cartItems.length} items):
@@ -253,6 +279,7 @@ const CartPage = () => {
           <ArrowRight size={20} />
         </button>
       </div>
+      <BottomNavigation />
     </div>
   );
 
