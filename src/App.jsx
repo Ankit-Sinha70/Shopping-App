@@ -14,8 +14,8 @@ import SuccessPage from "./pages/SuccessPage";
 import NotificationComponent from "./components/Notification";
 import { useEffect, useState } from "react";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
-import ElectronicsPage from "./pages/Electronics";
 import Shoes from "./pages/Shoes";
+import PaymentPage from "./pages/PaymentPage";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -29,7 +29,7 @@ function App() {
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
-  // Define paths where the Navbar should not appear
+  // paths where the Navbar should not appear
   const hideNavbarRoutes = [
     "/",
     "/login",
@@ -39,10 +39,16 @@ function App() {
     "/placeOrder",
   ];
 
+  // paths where the footer should not appear
+  const hideFooterRoutes = [
+    "/placeOrder",
+    "/payments",
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Conditionally render Navbar only if not isMobile and not on hidden routes */}
-      {!isMobile && !hideNavbarRoutes.includes(window.location.pathname) && (
+      {!isMobile && !hideFooterRoutes && !hideNavbarRoutes.includes(window.location.pathname) && (
         <Navbar />
       )}
 
@@ -59,7 +65,7 @@ function App() {
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/notification" element={<NotificationComponent />} />
         <Route path="/placeOrder" element={<PlaceOrderPage />} />
-        <Route path="/electronics" element={<ElectronicsPage />} />
+        <Route path="/payments" element={<PaymentPage />} />
         <Route path="/shoes" element={<Shoes />} />
       </Routes>
 

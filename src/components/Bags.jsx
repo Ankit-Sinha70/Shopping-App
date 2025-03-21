@@ -112,7 +112,6 @@ const Bags = () => {
         </button>
       </div>
 
-      {/* Category Title - Added responsive padding and improved typography */}
       <div className="px-5 md:px-10 lg:px-16 py-3 text-2xl md:text-3xl font-bold max-w-screen-xl mx-auto">
         Bags
       </div>
@@ -125,7 +124,6 @@ const Bags = () => {
               key={product.id}
               className="bg-white rounded-xl relative overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              {/* Product Image Wrapper */}
               <div>
                 <div className="w-full h-44 md:h-56 lg:h-64 flex items-center justify-center p-2 md:p-4">
                   <img
@@ -135,7 +133,6 @@ const Bags = () => {
                   />
                 </div>
 
-                {/* Floating Add Button */}
                 <button className="absolute top-4 right-4 bg-gray-200 text-black rounded-full w-7 h-7 md:w-8 md:h-8 flex items-center justify-center text-lg shadow-md transition-transform transform hover:scale-110">
                   <CiHeart />
                 </button>
@@ -158,7 +155,7 @@ const Bags = () => {
         </div>
       </div>
 
-      {/* Bottom Navigation - Keep as is for mobile */}
+      {/* Bottom Navigation */}
       <BottomNavigation />
     </div>
   );

@@ -131,7 +131,7 @@ const PlaceOrderPage = () => {
           <p className="text-sm text-gray-500">Total Price</p>
           <p className="text-2xl font-bold">$443.00</p>
         </div>
-        <button className="bg-black text-white rounded-full py-4 px-8 font-bold">
+        <button onClick={() => navigate("/payments")} className="bg-black text-white rounded-full py-4 px-8 font-bold">
           Place Order
         </button>
       </div>
