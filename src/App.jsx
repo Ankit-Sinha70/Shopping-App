@@ -17,6 +17,7 @@ import PlaceOrderPage from "./pages/PlaceOrderPage";
 import Shoes from "./pages/Shoes";
 import PaymentPage from "./pages/PaymentPage";
 import ProductDetailsPage from "./pages/ProductDetailPage";
+import SettingsPage from "./pages/SettingPage";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -44,6 +45,7 @@ function App() {
   const hideFooterRoutes = [
     "/placeOrder",
     "/payments",
+    "/settings"
   ];
 
   return (
@@ -69,6 +71,7 @@ function App() {
         <Route path="/payments" element={<PaymentPage />} />
         <Route path="/shoes" element={<Shoes />} />
         <Route path="/product-details" element={<ProductDetailsPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
 
       </Routes>
 

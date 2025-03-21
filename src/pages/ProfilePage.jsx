@@ -3,6 +3,7 @@ import Woman4 from "../../public/assets/PNG/woman4.png";
 import BottomNavigation from "../components/BottomNavigation";
 import { FaUserAlt } from "react-icons/fa";
 import { FaCartPlus, FaHeart, FaHome, FaBell } from "react-icons/fa";
+import { IoIosArrowForward } from "react-icons/io";
 import { MdLocalShipping } from "react-icons/md";
 import { FaCcVisa } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
@@ -148,12 +149,17 @@ const ProfilePage = () => {
 
       {/* Navigation Options */}
       <div className="bg-white rounded-2xl mx-4 mb-4 shadow-lg border border-gray-300">
-        <MenuItem icon="user" label="Personal Details" />
-        <MenuItem icon="shopping-bag" label="My Order" />
-        <MenuItem icon="heart" label="My Favourites" />
-        <MenuItem icon="truck" label="Shipping Address" />
-        <MenuItem icon="credit-card" label="My Card" />
-        <MenuItem icon="settings" label="Settings" isLast={true} />
+        <MenuItem icon="user" label="Personal Details" route="/profile" />
+        <MenuItem icon="shopping-bag" label="My Order" route="/orders" />
+        <MenuItem icon="heart" label="My Favourites" route="/favourites" />
+        <MenuItem icon="truck" label="Shipping Address" route="/shipping" />
+        <MenuItem icon="credit-card" label="My Card" route="/payment" />
+        <MenuItem
+          icon="settings"
+          label="Settings"
+          isLast={true}
+          route="/settings"
+        />
       </div>
 
       {/* Help & Support Section */}
@@ -169,35 +175,39 @@ const ProfilePage = () => {
   );
 
   // Menu Item Component
-  const MenuItem = ({ icon, label, isLast = false, isLogout = false }) => (
-    <div
-      className={`flex items-center justify-between p-4 ${
-        !isLast ? "border-b border-gray-100" : ""
-      }`}
-    >
-      <div className="flex items-center gap-3">
-        <div className="bg-gray-100 p-2 rounded-lg">
-          <IconComponent name={icon} />
-        </div>
-        <span className={`font-medium ${isLogout ? "text-red-600" : ""}`}>
-          {label}
-        </span>
-      </div>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+  const MenuItem = ({
+    icon,
+    label,
+    isLast = false,
+    isLogout = false,
+    route,
+  }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+      if (route) {
+        navigate(route);
+      }
+    };
+    return (
+      <div
+        className={`flex items-center justify-between p-4 ${
+          !isLast ? "border-b border-gray-100" : ""
+        }`}
+        onClick={handleClick}
       >
-        <polyline points="9 18 15 12 9 6" />
-      </svg>
-    </div>
-  );
+        <div className="flex items-center gap-3">
+          <div className="bg-gray-100 p-2 rounded-lg">
+            <IconComponent name={icon} />
+          </div>
+          <span className={`font-medium ${isLogout ? "text-red-600" : ""}`}>
+            {label}
+          </span>
+        </div>
+        <IoIosArrowForward />
+      </div>
+    );
+  };
 
   // Icon Component
   const IconComponent = ({ name }) => {
