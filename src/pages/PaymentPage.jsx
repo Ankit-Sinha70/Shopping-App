@@ -112,7 +112,7 @@ const PaymentPage = () => {
   };
 
   return (
-    <div className="min-h-screen max-w-full bg-gray-50 py-10">
+    <div className="min-h-screen max-w-full bg-gray-50 md:py-10">
       <div className="max-w-6xl mx-auto bg-white shadow-md rounded-2xl overflow-hidden lg:flex">
         {/* Left Panel - Payment Options */}
         <div className="w-full lg:w-1/2 p-6 lg:p-10 border-r border-gray-200">

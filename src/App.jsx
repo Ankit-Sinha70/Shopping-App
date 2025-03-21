@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
 import Shoes from "./pages/Shoes";
 import PaymentPage from "./pages/PaymentPage";
+import ProductDetailsPage from "./pages/ProductDetailPage";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -67,6 +68,8 @@ function App() {
         <Route path="/placeOrder" element={<PlaceOrderPage />} />
         <Route path="/payments" element={<PaymentPage />} />
         <Route path="/shoes" element={<Shoes />} />
+        <Route path="/product-details" element={<ProductDetailsPage />} />
+
       </Routes>
 
       {/* Display Footer on all pages except the excluded ones */}
