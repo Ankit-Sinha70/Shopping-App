@@ -2,84 +2,85 @@ import React from "react";
 import { CiHeart } from "react-icons/ci";
 import { MdArrowBack } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import Headphone from "../../public/assets/JPG/headphone.jpg";
-import Mobile from "../../public/assets/JPG/mobile.jpg";
-import Sneakers from "../../public/assets/PNG/sneakers.jpg";
+import Bags2 from "../../public/assets/JPG/bags2.jpg";
+import Bags3 from "../../public/assets/JPG/bags3.jpg";
+import Bags4 from "../../public/assets/JPG/bags4.jpg";
+import Bags5 from "../../public/assets/JPG/bags5.jpg";
 import BottomNavigation from "../components/BottomNavigation";
 
-const Shoes = () => {
+const Bags = () => {
   const navigate = useNavigate();
   // Sample products data
   const products = [
     {
       id: 1,
-      name: "On Ear Headphone",
-      description: "Beats Solo3 Wireless Kulak",
+      name: "Leather Backpack",
+      description: "Premium quality leather backpack for daily use",
       price: 105.0,
-      image: Sneakers,
+      image: Bags2,
     },
     {
       id: 2,
-      name: "Apple Watch",
-      description: "Headphones 700Beats",
+      name: "Travel Duffel Bag",
+      description: "Spacious and durable bag for travel lovers",
       price: 475.0,
-      image: Sneakers,
+      image: Bags3,
     },
     {
       id: 3,
-      name: "Table Lamp LED",
-      description: "Lamp For Student",
+      name: "Casual Tote Bag",
+      description: "Stylish and lightweight tote for everyday use",
       price: 40.0,
-      image: Sneakers,
+      image: Bags4,
     },
     {
       id: 4,
-      name: "Light Bulb",
-      description: "IncandescentLight bulb",
+      name: "Kids Bag",
+      description: "Sleek and professional bag with multiple compartments",
       price: 195.0,
-      image: Sneakers,
+      image: Bags5,
     },
     {
       id: 5,
-      name: "Smart Speaker",
-      description: "Voice Assistant Compatible",
+      name: "Hiking Backpack",
+      description: "Ergonomic and water-resistant design for adventurers",
       price: 195.0,
-      image: Sneakers,
+      image: Bags2,
     },
     {
       id: 6,
-      name: "Wireless Earbuds",
-      description: "Noise Cancelling",
+      name: "Crossbody Shoulder Bag",
+      description: "Compact and stylish for hands-free convenience",
       price: 195.0,
-      image: Sneakers,
+      image: Bags3,
     },
     {
       id: 7,
-      name: "Power Bank",
-      description: "10000mAh Fast Charging",
+      name: "Gym Duffel Bag",
+      description: "Spacious with separate compartments for workout gear",
       price: 195.0,
-      image: Mobile,
+      image: Bags4,
     },
     {
       id: 8,
-      name: "Bluetooth Speaker",
-      description: "Waterproof Portable",
+      name: "Rolling Luggage",
+      description: "Lightweight and sturdy for smooth traveling",
       price: 195.0,
-      image: Headphone,
+      image: Bags5,
     },
     {
       id: 9,
-      name: "Smartphone",
-      description: "Latest Model",
+      name: "Messenger Bag",
+      description: "Perfect blend of style and functionality",
       price: 195.0,
-      image: Headphone,
+      image: Bags2,
     },
     {
       id: 10,
-      name: "Digital Camera",
-      description: "4K Video Recording",
+      name: "Mini Backpack",
+      description: "Trendy and compact for carrying essentials",
       price: 195.0,
-      image: Headphone,
+      image: Bags3,
     },
   ];
 
@@ -113,7 +114,7 @@ const Shoes = () => {
 
       {/* Category Title - Added responsive padding and improved typography */}
       <div className="px-5 md:px-10 lg:px-16 py-3 text-2xl md:text-3xl font-bold max-w-screen-xl mx-auto">
-        Electronics
+        Bags
       </div>
 
       {/* Products Grid - Improved for responsive design */}
@@ -163,4 +164,4 @@ const Shoes = () => {
   );
 };
 
-export default Shoes;
+export default Bags;

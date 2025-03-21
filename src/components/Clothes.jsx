@@ -2,84 +2,86 @@ import React from "react";
 import { CiHeart } from "react-icons/ci";
 import { MdArrowBack } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import Headphone from "../../public/assets/JPG/headphone.jpg";
-import Mobile from "../../public/assets/JPG/mobile.jpg";
-import Sneakers from "../../public/assets/PNG/sneakers.jpg";
+import Tshirt from "../../public/assets/JPG/tshirt.jpg";
+import Tshirt2 from "../../public/assets/JPG/tshirt2.jpg";
+import Tshirt3 from "../../public/assets/JPG/tshirt3.jpg";
+import Tshirt4 from "../../public/assets/JPG/tshirt4.jpg";
+
 import BottomNavigation from "../components/BottomNavigation";
 
-const Shoes = () => {
+const Clothes = () => {
   const navigate = useNavigate();
   // Sample products data
   const products = [
     {
       id: 1,
-      name: "On Ear Headphone",
-      description: "Beats Solo3 Wireless Kulak",
+      name: "Casual T-Shirt",
+      description: "Soft cotton t-shirt for everyday wear",
       price: 105.0,
-      image: Sneakers,
+      image: Tshirt,
     },
     {
       id: 2,
-      name: "Apple Watch",
-      description: "Headphones 700Beats",
+      name: "Sporty T-Shirt",
+      description: "Lightweight and breathable for workouts",
       price: 475.0,
-      image: Sneakers,
+      image: Tshirt2,
     },
     {
       id: 3,
-      name: "Table Lamp LED",
-      description: "Lamp For Student",
+      name: "Classic Polo Shirt",
+      description: "Timeless design with a modern fit",
       price: 40.0,
-      image: Sneakers,
+      image: Tshirt3,
     },
     {
       id: 4,
-      name: "Light Bulb",
-      description: "IncandescentLight bulb",
+      name: "Graphic Print Tee",
+      description: "Trendy and stylish with bold prints",
       price: 195.0,
-      image: Sneakers,
+      image: Tshirt4,
     },
     {
       id: 5,
-      name: "Smart Speaker",
-      description: "Voice Assistant Compatible",
+      name: "V-Neck T-Shirt",
+      description: "Simple and elegant with a relaxed fit",
       price: 195.0,
-      image: Sneakers,
+      image: Tshirt,
     },
     {
       id: 6,
-      name: "Wireless Earbuds",
-      description: "Noise Cancelling",
+      name: "Oversized Tee",
+      description: "Comfortable and trendy oversized fit",
       price: 195.0,
-      image: Sneakers,
+      image: Tshirt2,
     },
     {
       id: 7,
-      name: "Power Bank",
-      description: "10000mAh Fast Charging",
+      name: "Slim Fit T-Shirt",
+      description: "Modern and stylish slim fit design",
       price: 195.0,
-      image: Mobile,
+      image: Tshirt3,
     },
     {
       id: 8,
-      name: "Bluetooth Speaker",
-      description: "Waterproof Portable",
+      name: "Long Sleeve T-Shirt",
+      description: "Perfect for cooler days with a sleek look",
       price: 195.0,
-      image: Headphone,
+      image: Tshirt4,
     },
     {
       id: 9,
-      name: "Smartphone",
-      description: "Latest Model",
+      name: "Cotton Blend T-Shirt",
+      description: "Soft fabric for all-day comfort",
       price: 195.0,
-      image: Headphone,
+      image: Tshirt,
     },
     {
       id: 10,
-      name: "Digital Camera",
-      description: "4K Video Recording",
+      name: "Striped T-Shirt",
+      description: "Trendy stripes for a casual look",
       price: 195.0,
-      image: Headphone,
+      image: Tshirt2,
     },
   ];
 
@@ -163,4 +165,4 @@ const Shoes = () => {
   );
 };
 
-export default Shoes;
+export default Clothes;

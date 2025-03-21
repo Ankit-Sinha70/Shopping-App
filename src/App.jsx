@@ -15,6 +15,7 @@ import NotificationComponent from "./components/Notification";
 import { useEffect, useState } from "react";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
 import ElectronicsPage from "./pages/Electronics";
+import Shoes from "./pages/Shoes";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -59,6 +60,7 @@ function App() {
         <Route path="/notification" element={<NotificationComponent />} />
         <Route path="/placeOrder" element={<PlaceOrderPage />} />
         <Route path="/electronics" element={<ElectronicsPage />} />
+        <Route path="/shoes" element={<Shoes />} />
       </Routes>
 
       {/* Display Footer on all pages except the excluded ones */}

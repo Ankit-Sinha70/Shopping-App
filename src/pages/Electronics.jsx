@@ -92,7 +92,7 @@ const ElectronicsPage = () => {
       <div className="flex justify-between items-center p-5 md:px-10 lg:px-16 max-w-screen-xl mx-auto">
         <button
           className="bg-black text-white rounded-full w-9 h-9 flex items-center justify-center hover:bg-gray-800 transition-colors"
-          onClick={() =>navigate("/home")}
+          onClick={() => navigate("/home")}
         >
           <MdArrowBack/>
         </button>

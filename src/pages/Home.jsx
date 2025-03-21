@@ -4,8 +4,8 @@ import Advertise from "/assets/PNG/Advertise.png";
 import { Button } from "../components/ui/button";
 import Testimonials from "../components/Testimonials";
 import newArrivals from "../../public/assets/JPG/new-arrivals.jpg";
-import Bags from "../../public/assets/JPG/bags.jpg";
-import Shoes from "../../public/assets/JPG/shoes.jpg";
+import Bags1 from "../../public/assets/JPG/bags.jpg";
+import Shoes1 from "../../public/assets/JPG/shoes.jpg";
 import Cloths from "../../public/assets/JPG/cloths.jpg";
 import Jewellary from "../../public/assets/JPG/jwellary.jpg";
 import Electronics from "../../public/assets/JPG/electronics.jpg";
@@ -18,6 +18,9 @@ import Sandals from "../../public/assets/JPG/shoes.jpg";
 import { FaStar } from "react-icons/fa";
 import BottomNavigation from "../components/BottomNavigation";
 import ElectronicsPage from "./Electronics";
+import Shoes from "./Shoes";
+import Clothes from "../components/Clothes";
+import Bags from "../components/Bags";
 
 const Home = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -37,8 +40,8 @@ const Home = () => {
   const categories = [
     { id: 1, name: "New Arrivals", count: 208, image: newArrivals },
     { id: 2, name: "Clothes", count: 358, image: Cloths },
-    { id: 3, name: "Bags", count: 160, image: Bags },
-    { id: 4, name: "Shoes", count: 230, image: Shoes },
+    { id: 3, name: "Bags", count: 160, image: Bags1 },
+    { id: 4, name: "Shoes", count: 230, image: Shoes1 },
     { id: 5, name: "Electronics", count: 130, image: Electronics },
     { id: 6, name: "Jewelry", count: 87, image: Jewellary },
   ];
@@ -77,10 +80,10 @@ const Home = () => {
     ],
     // Shoes (category ID: 4)
     4: [
-      { id: 11, name: "Running Shoes", image: Shoes },
+      { id: 11, name: "Running Shoes", image: Shoes1 },
       { id: 12, name: "Casual Sneakers", image: Sneakers },
       { id: 13, name: "Formal Shoes", image: Sandals },
-      { id: 14, name: "Sandals", image: Shoes },
+      { id: 14, name: "Sandals", image: Shoes1 },
     ],
   };
 
@@ -100,17 +103,17 @@ const Home = () => {
       discount: "50% Off",
       text: "On everything today",
       code: "FSCREATION",
-      image: Bags,
+      image: Bags1,
     },
     {
       discount: "70% Off",
       text: "On everything today",
       code: "FSCREATION",
-      image: Shoes,
+      image: Shoes1,
     },
   ];
 
-  const newArrivalsProducts = [
+  const newArrivalsProducts = [  
     {
       name: "The Marc Jacobs",
       description: "Traveler Tote",
@@ -137,6 +140,15 @@ const Home = () => {
 
   if (selectedCategory === 5) {
     return <ElectronicsPage />;
+  }
+  if (selectedCategory === 4) {
+    return <Shoes />;
+  }
+  if (selectedCategory === 2) {
+    return <Clothes />;
+  }
+  if (selectedCategory === 3) {
+    return <Bags />;
   }
 
   return (
