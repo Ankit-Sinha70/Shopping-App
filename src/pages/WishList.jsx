@@ -63,7 +63,6 @@ const WishList = () => {
 
   return (
     <div className="bg-white min-h-screen w-full px-4 sm:px-6 lg:px-8 py-5">
-      {/* Header */}
       <div className="max-w-2xl mx-auto">
         <div className="flex justify-between items-center mb-5">
           <button
@@ -74,8 +73,6 @@ const WishList = () => {
           </button>
           <FiBell size={20} />
         </div>
-
-        {/* Search Bar */}
         <div className="flex items-center mb-6">
           <div className="flex flex-1 items-center bg-gray-100 px-3 py-2 rounded-full">
             <FiSearch className="text-gray-500 mr-2" />
@@ -89,11 +86,7 @@ const WishList = () => {
             <FiShoppingCart size={18} />
           </button>
         </div>
-
-        {/* Title */}
         <h2 className="text-lg font-bold mb-4">Wishlist</h2>
-
-        {/* Wishlist Items */}
         <div className="space-y-4 pb-20">
           {wishlistItems.map((item) => (
             <div

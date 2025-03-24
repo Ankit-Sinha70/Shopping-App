@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
+import ReviewList from "./ReviewList";
 
 const ProductDetailsPage = () => {
   const location = useLocation();
@@ -17,22 +18,20 @@ const ProductDetailsPage = () => {
   }
 
   return (
-    <div className="bg-white min-h-screen pb-16 relative">
-      {/* Header */}
-      <div className="flex justify-between items-center p-5">
+    <div className="bg-white min-h-screen pb-16">
+      <div className="flex justify-between items-center p-5 sm:px-6 lg:px-8">
         <button
-          className="bg-black text-white rounded-full w-9 h-9 flex items-center justify-center hover:bg-gray-800 transition-colors"
+          className="bg-black text-white rounded-full w-9 h-9 flex items-center justify-center hover:bg-gray-800"
           onClick={() => navigate(-1)}
         >
           <MdArrowBack size={20} />
         </button>
-        <button className="text-2xl hover:text-gray-700 transition-colors">
+        <button className="text-2xl hover:text-gray-700">
           <CiHeart size={24} />
         </button>
       </div>
 
-      {/* Product Image */}
-      <div className="flex justify-center items-center px-5 relative">
+      <div className="flex justify-center items-center px-5 sm:px-6 lg:px-8">
         <img
           src={product.image}
           alt={product.name}
@@ -45,15 +44,14 @@ const ProductDetailsPage = () => {
         </div>
       </div>
 
-      {/* Product Details */}
       <div
-        className="bg-white p-5 rounded-t-3xl shadow-xl mt-[-40px] relative z-10"
+        className="bg-white p-5 sm:px-6 lg:px-8 rounded-t-3xl shadow-xl mt-[-40px] relative z-10 max-w-3xl mx-auto"
         style={{
           boxShadow:
             "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset",
         }}
       >
-        <div className="flex justify-between">
+        <div className="flex sm:flex-row justify-between gap-4">
           <div>
             <h2 className="text-xl font-bold">{product.name}</h2>
             <div className="flex items-center text-yellow-500">
@@ -61,7 +59,7 @@ const ProductDetailsPage = () => {
               <span className="text-gray-600 text-xs ml-2">(320 Review)</span>
             </div>
           </div>
-          <div className="items-center justify-center">
+          <div>
             {/* Quantity Selector */}
             <div className="flex items-center space-x-3 ">
               <div className="flex items-center overflow-hidden  bg-gray-200 rounded-full">
@@ -90,7 +88,7 @@ const ProductDetailsPage = () => {
           {/* Size Selection */}
           <div className="mt-4">
             <h3 className="text-sm font-semibold">Size</h3>
-            <div className="flex space-x-2 mt-2">
+            <div className="flex space-x-2 mt-10">
               {["S", "M", "L", "XL", "XXL"].map((size) => (
                 <button
                   key={size}
@@ -148,6 +146,7 @@ const ProductDetailsPage = () => {
           </div>
         </div>
       </div>
+      <ReviewList />
     </div>
   );
 };
