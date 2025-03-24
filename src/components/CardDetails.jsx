@@ -53,7 +53,7 @@ const CardDetails = ({
             </div>
             <div className="text-right">
               <div className="text-gray-400 text-xs">VALID THRU</div>
-              <div className="text-white">{expDate}</div>
+              <div className="text-white">{expDate}</div> 
             </div>
           </div>
         </div>

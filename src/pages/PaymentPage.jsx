@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 
@@ -16,11 +16,21 @@ import VisaCardForm from "../components/payment/VisaCardForm";
 import MasterCardForm from "../components/payment/MasterCardForm";
 import PaypalForm from "../components/payment/PaypalForm";
 import GooglePayForm from "../components/payment/GooglePayForm";
+import PaymentSuccess from "./PaymentSuccess";
 
 const PaymentPage = () => {
   const navigate = useNavigate();
+  const [showSuccess, setShowSuccess] = useState(false);
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [showPaymentDetails, setShowPaymentDetails] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    if (showSuccess && modalRef.current) {
+      modalRef.current.focus();
+    }
+  }, [showSuccess]);
 
   const [visa, setVisa] = useState({
     number: "3829 4820 4629 5025",
@@ -37,7 +47,7 @@ const PaymentPage = () => {
     password: "",
   });
   const googlePay = {
-    email: "aankit.sinha@gmail.com",
+    email: "ankit.sinha@gmail.com",
     phone: "+1 555-123-4567",
     cards: [
       { type: "Visa", last4: "5025", active: true },
@@ -112,93 +122,119 @@ const PaymentPage = () => {
   };
 
   return (
-    <div className="min-h-screen max-w-full bg-gray-50 md:py-10">
-      <div className="max-w-6xl mx-auto bg-white shadow-md rounded-2xl overflow-hidden lg:flex">
-        {/* Left Panel - Payment Options */}
-        <div className="w-full lg:w-1/2 p-6 lg:p-10 border-r border-gray-200">
-          {/* Back Button */}
-          <button
-            onClick={() => navigate("/placeOrder")}
-            className="mb-6 inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition"
-          >
-            <IoArrowBackCircleOutline size={28} />
-            <span className="font-medium">Back</span>
-          </button>
+    <div className="relative min-h-screen max-w-full bg-gray-50 md:py-10">
+      <div
+        className={`transition-all duration-300 ${
+          showSuccess || isLoading
+            ? "blur-0 pointer-events-none select-none"
+            : ""
+        }`}
+      >
+        <div className="max-w-6xl mx-auto bg-white shadow-md rounded-2xl overflow-hidden lg:flex">
+          <div className="w-full lg:w-1/2 p-6 lg:p-10 border-r border-gray-200">
+            <button
+              onClick={() => navigate("/placeOrder")}
+              className="mb-6 inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition"
+            >
+              <IoArrowBackCircleOutline size={28} />
+              <span className="font-medium">Back</span>
+            </button>
 
-          {!showPaymentDetails && (
-            <h2 className="text-2xl font-bold mb-6">Select Payment Method</h2>
-          )}
+            {!showPaymentDetails && (
+              <h2 className="text-2xl font-bold mb-6">Select Payment Method</h2>
+            )}
 
-          {/* Payment Options or Form (mobile) */}
-          {!showPaymentDetails ? (
-            <>
-              <div className="space-y-3">
-                {paymentOptions.map((opt) => (
-                  <PaymentOptionCard
-                    key={opt.id}
-                    id={opt.id}
-                    name={opt.name}
-                    logo={opt.logo}
-                    selected={selectedPayment}
-                    onSelect={handlePaymentSelect}
-                  />
-                ))}
-              </div>
-
-              <button className="w-full mt-6 border border-dashed border-gray-300 rounded-xl p-4 flex items-center justify-center hover:bg-gray-100">
-                <div className="flex items-center gap-2 text-gray-500">
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                      clipRule="evenodd"
+            {!showPaymentDetails ? (
+              <>
+                <div className="space-y-3">
+                  {paymentOptions.map((opt) => (
+                    <PaymentOptionCard
+                      key={opt.id}
+                      id={opt.id}
+                      name={opt.name}
+                      logo={opt.logo}
+                      selected={selectedPayment}
+                      onSelect={handlePaymentSelect}
                     />
-                  </svg>
-                  <span>Add Card</span>
+                  ))}
                 </div>
-              </button>
-            </>
-          ) : (
-            <div className="block lg:hidden mt-6">{renderDetails()}</div>
-          )}
-        </div>
 
-        {/* Right Panel - Payment Details or History */}
-        <div className="w-full lg:w-1/2 p-6 lg:p-10">
-          {showPaymentDetails ? (
-            <>
-              <div className="hidden lg:block">{renderDetails()}</div>
-              <div className="flex justify-between mt-6">
-                <button
-                  className="text-gray-500 font-medium py-2 px-4 rounded hover:text-gray-700 hover:bg-gray-100"
-                  onClick={() => setShowPaymentDetails(false)}
-                >
-                  Cancel
+                <button className="w-full mt-6 border border-dashed border-gray-300 rounded-xl p-4 flex items-center justify-center hover:bg-gray-100">
+                  <div className="flex items-center gap-2 text-gray-500">
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span>Add Card</span>
+                  </div>
                 </button>
-                <button
-                  className="bg-black text-white font-medium px-6 py-3 rounded-lg hover:bg-gray-800"
-                  onClick={() => navigate("/confirmation")}
-                >
-                  Confirm
-                </button>
-              </div>
-            </>
-          ) : (
-            <>
-              <h2 className="text-2xl font-bold mb-4">Recent Transactions</h2>
-              <div className="space-y-3">
-                {historyItems.map((item) => (
-                  <PaymentHistoryItem key={item.id} item={item} />
-                ))}
-              </div>
-            </>
-          )}
+              </>
+            ) : (
+              <div className="block lg:hidden mt-6">{renderDetails()}</div>
+            )}
+          </div>
+
+          <div className="w-full lg:w-1/2 p-6 lg:p-10">
+            {showPaymentDetails ? (
+              <>
+                <div className="hidden lg:block">{renderDetails()}</div>
+                <div className="flex justify-between mt-6">
+                  <button
+                    className="text-gray-500 font-medium py-2 px-4 rounded hover:text-gray-700 hover:bg-gray-100"
+                    onClick={() => setShowPaymentDetails(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="bg-black text-white font-medium px-6 py-3 rounded-lg hover:bg-gray-800"
+                    onClick={() => {
+                      setIsLoading(true);
+                      setTimeout(() => {
+                        setIsLoading(false);
+                        setShowSuccess(true);
+                      }, 2000);
+                    }}
+                  >
+                    Confirm
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <h2 className="text-2xl font-bold mb-4">Recent Transactions</h2>
+                <div className="space-y-3">
+                  {historyItems.map((item) => (
+                    <PaymentHistoryItem key={item.id} item={item} />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </div>
+
+      {isLoading && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/60 backdrop-blur-sm">
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-black border-t-transparent"></div>
+        </div>
+      )}
+
+      {showSuccess && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm transition-all"
+          tabIndex={-1}
+          ref={modalRef}
+        >
+          <PaymentSuccess onClose={() => setShowSuccess(false)} />
+        </div>
+      )}
     </div>
   );
 };

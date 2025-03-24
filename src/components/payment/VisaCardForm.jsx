@@ -27,7 +27,7 @@ const VisaCardForm = ({ values, onChange }) => {
           <div className="flex justify-between items-end">
             <div className="overflow-hidden">
               <div className="text-gray-400 text-xs">CARD HOLDER NAME</div>
-              <div className="text-white truncate max-w-xs">Anita Rose</div>
+              <div className="text-white truncate max-w-xs">Ankit Sinha</div>
             </div>
             <div className="flex items-end gap-2">
               <div className="text-right">

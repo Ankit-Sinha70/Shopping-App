@@ -21,6 +21,7 @@ import SettingsPage from "./pages/SettingPage";
 import OrdersPage from "./pages/OrdersPage";
 import OrderDetails from "./pages/OrderDetails";
 import WishList from "./pages/WishList";
+import PaymentSuccess from "./pages/PaymentSuccess";
 
 function App() {
   const location = useLocation();
@@ -55,6 +56,7 @@ function App() {
     "/account",
     "/orderDetails",
     "/wishlist",
+    "/payment-success",
   ];
 
   return (
@@ -84,6 +86,7 @@ function App() {
           <Route path="/orders" element={<OrdersPage />} />
           <Route path="/orderDetails" element={<OrderDetails />} />
           <Route path="/wishlist" element={<WishList />} />
+          {/* <Route path="/payment-success" element={<PaymentSuccess />} /> */}
         </Routes>
       </div>
 
