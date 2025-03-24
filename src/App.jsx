@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -12,26 +13,26 @@ import LogInPage from "./pages/LogInPage";
 import WelcomeScreen2 from "./pages/WelcomeScreen2";
 import SuccessPage from "./pages/SuccessPage";
 import NotificationComponent from "./components/Notification";
-import { useEffect, useState } from "react";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
 import Shoes from "./pages/Shoes";
 import PaymentPage from "./pages/PaymentPage";
 import ProductDetailsPage from "./pages/ProductDetailPage";
 import SettingsPage from "./pages/SettingPage";
+import OrdersPage from "./pages/OrdersPage";
+import OrderDetails from "./pages/OrderDetails";
 
 function App() {
+  const location = useLocation();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const checkIsMobile = () => setIsMobile(window.innerWidth < 768);
     checkIsMobile();
     window.addEventListener("resize", checkIsMobile);
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
-  // paths where the Navbar should not appear
+  // Paths where the Navbar should not appear
   const hideNavbarRoutes = [
     "/",
     "/login",
@@ -41,42 +42,50 @@ function App() {
     "/placeOrder",
   ];
 
-  // paths where the footer should not appear
+  // Paths where the Footer should not appear
   const hideFooterRoutes = [
     "/placeOrder",
     "/payments",
-    "/settings"
+    "/settings",
+    "/product-details",
+    "/notification",
+    "/success",
+    "/cart",
+    "/account",
+    "/orderDetails",
   ];
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Conditionally render Navbar only if not isMobile and not on hidden routes */}
-      {!isMobile && !hideFooterRoutes && !hideNavbarRoutes.includes(window.location.pathname) && (
-        <Navbar />
-      )}
+      {/* Conditionally render Navbar */}
+      {!isMobile && !hideNavbarRoutes.includes(location.pathname) && <Navbar />}
 
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/women" element={<Women />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/account" element={<ProfilePage />} />
-        <Route path="/signUp" element={<SignUpPage />} />
-        <Route path="/" element={<WelcomeScreen />} />
-        <Route path="/login" element={<LogInPage />} />
-        <Route path="/welcomeScreen2" element={<WelcomeScreen2 />} />
-        <Route path="/success" element={<SuccessPage />} />
-        <Route path="/notification" element={<NotificationComponent />} />
-        <Route path="/placeOrder" element={<PlaceOrderPage />} />
-        <Route path="/payments" element={<PaymentPage />} />
-        <Route path="/shoes" element={<Shoes />} />
-        <Route path="/product-details" element={<ProductDetailsPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
+      {/* Main Content */}
+      <div className="flex-grow">
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/women" element={<Women />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/account" element={<ProfilePage />} />
+          <Route path="/signUp" element={<SignUpPage />} />
+          <Route path="/" element={<WelcomeScreen />} />
+          <Route path="/login" element={<LogInPage />} />
+          <Route path="/welcomeScreen2" element={<WelcomeScreen2 />} />
+          <Route path="/success" element={<SuccessPage />} />
+          <Route path="/notification" element={<NotificationComponent />} />
+          <Route path="/placeOrder" element={<PlaceOrderPage />} />
+          <Route path="/payments" element={<PaymentPage />} />
+          <Route path="/shoes" element={<Shoes />} />
+          <Route path="/product-details" element={<ProductDetailsPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/orders" element={<OrdersPage />} />
+          <Route path="/orderDetails" element={<OrderDetails />} />
+        </Routes>
+      </div>
 
-      </Routes>
-
-      {/* Display Footer on all pages except the excluded ones */}
-      {!hideNavbarRoutes.includes(window.location.pathname) && <Footer />}
+      {/* Conditionally render Footer */}
+      {!hideFooterRoutes.includes(location.pathname) && <Footer />}
     </div>
   );
 }

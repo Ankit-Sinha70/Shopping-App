@@ -39,6 +39,16 @@ const CartPage = () => {
       slideOffset: 0,
     },
     {
+      id: 4,
+      name: "Herschel Supply Co",
+      description: "Daypack Backpack",
+      price: 40,
+      image: Backpack,
+      quantity: 1,
+      reviews: 320,
+      slideOffset: 0,
+    },
+    {
       id: 3,
       name: "Herschel Supply Co",
       description: "Daypack Backpack",

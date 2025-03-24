@@ -12,9 +12,11 @@ import { GoShieldLock } from "react-icons/go";
 import { IoIosLogOut } from "react-icons/io";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import OrdersPage from "./OrdersPage";
 
 const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState("account");
+  const [activeMobileView, setActiveMobileView] = useState("profile");
   const [orderTab, setOrderTab] = useState("active");
   const [addresses, setAddresses] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -115,64 +117,88 @@ const ProfilePage = () => {
     setNewAddress({ name: "", street: "", city: "", zip: "" });
   };
 
-  const MobileView = () => (
-    <div className="flex flex-col h-full bg-gray-50">
-      <div className="flex justify-between items-center p-4">
-        <button
-          onClick={() => navigate("/home")}
-          className="bg-gray-300 rounded-full p-2"
-        >
-          <IoMdArrowRoundBack className="h-6 w-6" />
-        </button>
-        <button className="bg-gray-300 rounded-full p-2">
-          <IoSettings className="h-6 w-6 bg-gray-300" />
-        </button>
-      </div>
+  const navigateToOrders = () => {
+    setActiveMobileView("orders");
+  };
 
-      {/* Profile Header */}
-      <div
-        className="flex items-center gap-4 p-4 bg-white rounded-lg mx-4 mb-4 shadow-sm"
-        style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}
-      >
-        <div className="w-16 h-16 overflow-hidden rounded-full">
-          <img
-            src="https://github.com/shadcn.png"
-            alt="Profile"
-            className="w-full h-full object-cover"
+  // Function to go back to profile view in mobile
+  const backToProfile = () => {
+    setActiveMobileView("profile");
+  };
+
+  const MobileView = () => {
+    if (activeMobileView === "orders") {
+      return <OrdersPage onBackClick={backToProfile} />;
+    }
+
+    return (
+      <div className="flex flex-col h-full bg-gray-50">
+        <div className="flex justify-between items-center p-4">
+          <button
+            onClick={() => navigate("/home")}
+            className="bg-gray-300 rounded-full p-2"
+          >
+            <IoMdArrowRoundBack className="h-6 w-6" />
+          </button>
+          <button className="bg-gray-300 rounded-full p-2">
+            <IoSettings className="h-6 w-6 bg-gray-300" />
+          </button>
+        </div>
+
+        {/* Profile Header */}
+        <div
+          className="flex items-center gap-4 p-4 bg-white rounded-lg mx-4 mb-4 shadow-sm"
+          style={{ boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }}
+        >
+          <div className="w-16 h-16 overflow-hidden rounded-full">
+            <img
+              src="https://github.com/shadcn.png"
+              alt="Profile"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <h2 className="text-lg font-bold">Fscreation</h2>
+            <p className="text-gray-500 text-sm">Fscreation441@gmail.com</p>
+          </div>
+        </div>
+
+        {/* Navigation Options */}
+        <div className="bg-white rounded-2xl mx-4 mb-4 shadow-lg border border-gray-300">
+          <MenuItem icon="user" label="Personal Details" route="/profile" />
+          <MenuItem
+            icon="shopping-bag"
+            label="My Order"
+            onClick={navigateToOrders}
+          />
+          <MenuItem icon="heart" label="My Favourites" route="/favourites" />
+          <MenuItem icon="truck" label="Shipping Address" route="/shipping" />
+          <MenuItem icon="credit-card" label="My Card" route="/payment" />
+          <MenuItem
+            icon="settings"
+            label="Settings"
+            isLast={true}
+            route="/settings"
           />
         </div>
-        <div>
-          <h2 className="text-lg font-bold">Fscreation</h2>
-          <p className="text-gray-500 text-sm">Fscreation441@gmail.com</p>
+
+        {/* Help & Support Section */}
+        <div className="bg-white rounded-2xl mx-4 mb-16 shadow-lg border border-gray-300">
+          <MenuItem icon="help-circle" label="FAQs" />
+          <MenuItem icon="shield" label="Privacy Policy" />
+          <MenuItem
+            icon="log-out"
+            label="Logout"
+            isLast={true}
+            isLogout={true}
+          />
         </div>
-      </div>
 
-      {/* Navigation Options */}
-      <div className="bg-white rounded-2xl mx-4 mb-4 shadow-lg border border-gray-300">
-        <MenuItem icon="user" label="Personal Details" route="/profile" />
-        <MenuItem icon="shopping-bag" label="My Order" route="/orders" />
-        <MenuItem icon="heart" label="My Favourites" route="/favourites" />
-        <MenuItem icon="truck" label="Shipping Address" route="/shipping" />
-        <MenuItem icon="credit-card" label="My Card" route="/payment" />
-        <MenuItem
-          icon="settings"
-          label="Settings"
-          isLast={true}
-          route="/settings"
-        />
+        {/* Bottom Navigation */}
+        <BottomNavigation />
       </div>
-
-      {/* Help & Support Section */}
-      <div className="bg-white rounded-2xl mx-4 mb-16 shadow-lg border border-gray-300">
-        <MenuItem icon="help-circle" label="FAQs" />
-        <MenuItem icon="shield" label="Privacy Policy" />
-        <MenuItem icon="log-out" label="Logout" isLast={true} isLogout={true} />
-      </div>
-
-      {/* Bottom Navigation */}
-      <BottomNavigation />
-    </div>
-  );
+    );
+  };
 
   // Menu Item Component
   const MenuItem = ({
@@ -181,11 +207,14 @@ const ProfilePage = () => {
     isLast = false,
     isLogout = false,
     route,
+    onClick,
   }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-      if (route) {
+      if (onClick) {
+        onClick();
+      } else if (route) {
         navigate(route);
       }
     };

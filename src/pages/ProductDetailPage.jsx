@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import { CiHeart } from "react-icons/ci";
@@ -6,6 +6,8 @@ import { CiHeart } from "react-icons/ci";
 const ProductDetailsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [count, setCount] = useState(1);
   const product = location.state?.product;
 
   if (!product) {
@@ -63,9 +65,19 @@ const ProductDetailsPage = () => {
             {/* Quantity Selector */}
             <div className="flex items-center space-x-3 ">
               <div className="flex items-center overflow-hidden  bg-gray-200 rounded-full">
-                <button className="px-3 py-1">-</button>
-                <span className="px-4 py-1">1</span>
-                <button className="px-3 py-1">+</button>
+                <button
+                  onClick={() => setCount((prev) => Math.max(prev - 1, 0))}
+                  className="px-3 py-1"
+                >
+                  -
+                </button>
+                <span className="px-4 py-1">{count}</span>
+                <button
+                  onClick={() => setCount(count + 1)}
+                  className="px-3 py-1"
+                >
+                  +
+                </button>
               </div>
             </div>
             <div className="text-black text-sm font-semibold">
@@ -77,12 +89,17 @@ const ProductDetailsPage = () => {
         <div className="flex justify-between">
           {/* Size Selection */}
           <div className="mt-4">
-            <h3 className="text-sm font-semibold mt2">Size</h3>
-            <div className="flex space-x-2 mt-10">
+            <h3 className="text-sm font-semibold">Size</h3>
+            <div className="flex space-x-2 mt-2">
               {["S", "M", "L", "XL", "XXL"].map((size) => (
                 <button
                   key={size}
-                  className="bg-gray-200 px-4 py-1 rounded-full hover:bg-gray-200"
+                  onClick={() => setSelectedSize(size)}
+                  className={`px-4 py-1 rounded-full transition-all duration-300 ${
+                    selectedSize === size
+                      ? "bg-black text-white"
+                      : "bg-gray-200 text-black hover:bg-gray-300"
+                  }`}
                 >
                   {size}
                 </button>
@@ -120,7 +137,7 @@ const ProductDetailsPage = () => {
           <div className="">
             <p className="text-xs text-gray-400 w-20 mt-6">Total Price:</p>
             <span className="font-bold text-lg">
-              ${product.price.toFixed(2)}
+              ${count * product.price.toFixed(2)}
             </span>
           </div>
           {/* Add to Cart Button */}

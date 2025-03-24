@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Globe, Bell, Moon, HelpCircle, LogOut } from "lucide-react";
+import { Globe, Bell, Moon, HelpCircle, LogOut, ArrowLeft } from "lucide-react";
 import { IoIosArrowForward } from "react-icons/io";
 import { LuUpload } from "react-icons/lu";
 import Avatar from "../../public/assets/PNG/avatar.png";
+import { useNavigate } from "react-router-dom";
 
 const SettingsPage = () => {
+    const navigate = useNavigate(); 
   const [profileImage, setProfileImage] = useState(null);
   const [formData, setFormData] = useState({
     name: "Fscreation",
@@ -38,6 +40,9 @@ const SettingsPage = () => {
 
   return (
     <div className="w-full md:max-w-3xl md:mx-auto p-6 bg-white shadow-lg rounded-lg">
+      <button onClick={() => navigate("/account")} className="p-2 bg-black text-white rounded-full">
+        <ArrowLeft size={20} />
+      </button>
       <div className="flex flex-col items-center mb-6">
         <div className="relative w-24 h-24 mb-2">
           <div className="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
