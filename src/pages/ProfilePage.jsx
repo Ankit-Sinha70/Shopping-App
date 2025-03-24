@@ -171,7 +171,7 @@ const ProfilePage = () => {
             label="My Order"
             onClick={navigateToOrders}
           />
-          <MenuItem icon="heart" label="My Favourites" route="/favourites" />
+          <MenuItem icon="heart" label="My WishList" route="/wishlist" />
           <MenuItem icon="truck" label="Shipping Address" route="/shipping" />
           <MenuItem icon="credit-card" label="My Card" route="/payment" />
           <MenuItem

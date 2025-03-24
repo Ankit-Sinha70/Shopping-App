@@ -102,6 +102,7 @@ const OrderDetails = () => {
             10:00–11:00 — 25 June, 2021 <br />
             3512 Nagercoil, India
           </div>
+          <div className="border-b border-gray-300 pt-5"></div>
           <div className="mt-3 text-xs text-gray-500">
             You can change pick-up time for your order by 10:00, 24 June
           </div>

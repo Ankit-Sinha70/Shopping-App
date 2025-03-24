@@ -20,6 +20,7 @@ import ProductDetailsPage from "./pages/ProductDetailPage";
 import SettingsPage from "./pages/SettingPage";
 import OrdersPage from "./pages/OrdersPage";
 import OrderDetails from "./pages/OrderDetails";
+import WishList from "./pages/WishList";
 
 function App() {
   const location = useLocation();
@@ -53,6 +54,7 @@ function App() {
     "/cart",
     "/account",
     "/orderDetails",
+    "/wishlist",
   ];
 
   return (
@@ -67,7 +69,6 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/women" element={<Women />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/account" element={<ProfilePage />} />
           <Route path="/signUp" element={<SignUpPage />} />
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="/login" element={<LogInPage />} />
@@ -79,8 +80,10 @@ function App() {
           <Route path="/shoes" element={<Shoes />} />
           <Route path="/product-details" element={<ProductDetailsPage />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/account" element={<ProfilePage />} />
           <Route path="/orders" element={<OrdersPage />} />
           <Route path="/orderDetails" element={<OrderDetails />} />
+          <Route path="/wishlist" element={<WishList />} />
         </Routes>
       </div>
 

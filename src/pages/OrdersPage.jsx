@@ -3,7 +3,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import Woman4 from "../../public/assets/PNG/woman4.png";
 
-const OrdersPage = ({ onBackClick }) => {
+const OrdersPage = () => {
     const navigate = useNavigate();
   const [orderTab, setOrderTab] = useState("active");
 
@@ -83,7 +83,7 @@ const OrdersPage = ({ onBackClick }) => {
       {/* Header */}
       <div className="flex justify-between items-center p-4 bg-white shadow-sm">
         <button
-          onClick={onBackClick}
+          onClick={() => navigate("/account")}
           className="bg-gray-100 rounded-full p-2"
         >
           <IoMdArrowRoundBack className="h-6 w-6" />
