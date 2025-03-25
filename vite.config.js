@@ -5,7 +5,14 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),  tailwindcss(),],
+  plugins: [react(),  tailwindcss(),
+    [
+      "@locator/babel-jsx/dist",
+      {
+        env: "development",
+      },
+    ],
+  ],
   resolve: {
     alias: {
       "@": path.resolve(path.dirname(new URL(import.meta.url).pathname), "./src"),

@@ -1,10 +1,8 @@
-// src/components/payment/VisaCardForm.jsx
 import React from "react";
 
 const VisaCardForm = ({ values, onChange }) => {
   return (
     <div className="mb-6 w-full max-w-lg mx-auto lg:mx-0">
-      {/* Visa Card Display */}
       <div className="relative w-full h-52 rounded-xl overflow-hidden mb-6">
         <div className="absolute inset-0">
           <div className="flex h-full">

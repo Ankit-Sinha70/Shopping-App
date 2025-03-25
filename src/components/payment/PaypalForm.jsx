@@ -1,11 +1,9 @@
-// src/components/payment/PaypalForm.jsx
 import React from "react";
 import Paypal from "../../../public/assets/SVG/paypal.svg";
 
 const PaypalForm = ({ values, onChange }) => {
   return (
     <div className="mb-6 w-full max-w-lg mx-auto lg:mx-0">
-      {/* PayPal Form */}
       <div className="bg-white rounded-xl p-5 mb-6 shadow-sm">
         <div className="flex justify-center mb-6">
           <img src={Paypal} alt="PayPal" className="h-14 object-contain" />

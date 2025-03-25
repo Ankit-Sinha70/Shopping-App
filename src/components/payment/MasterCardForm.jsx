@@ -1,10 +1,8 @@
-// src/components/payment/MasterCardForm.jsx
 import React from "react";
 
 const MasterCardForm = ({ values, onChange }) => {
   return (
     <div className="mb-6 w-full max-w-lg mx-auto lg:mx-0">
-      {/* Mastercard Display */}
       <div className="relative w-full h-52 rounded-xl overflow-hidden mb-6">
         <div className="absolute inset-0">
           <div className="flex h-full">

@@ -274,7 +274,7 @@ const Home = () => {
                 Top{" "}
                 {categoryButtons.find((cat) => cat.active)?.name || "Products"}
               </h2>
-              <a href="#" className="text-sm text-gray-500">
+              <a href="/viewAll" className="text-sm text-gray-500">
                 View All
               </a>
             </div>
