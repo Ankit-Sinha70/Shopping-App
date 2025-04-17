@@ -129,23 +129,28 @@ const Categories = () => {
             >
               {name}
               <ChevronDown
-                className={`transition-transform ${
+                className={`transform transition-transform duration-300 ease-in-out ${
                   filters[name] ? "rotate-180" : ""
                 }`}
               />
             </button>
-            {filters[name] && (
-              <div className="mt-2 ml-4 text-gray-600">
-                {subCategories.map((sub) => (
-                  <p
-                    key={sub}
-                    className="py-1 cursor-pointer hover:text-gray-900"
-                  >
-                    {sub}
-                  </p>
-                ))}
-              </div>
-            )}
+
+            <div
+              className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                filters[name]
+                  ? "max-h-96 opacity-100 mt-2 ml-4"
+                  : "max-h-0 opacity-0"
+              } text-gray-600`}
+            >
+              {subCategories.map((sub) => (
+                <p
+                  key={sub}
+                  className="py-1 cursor-pointer hover:text-gray-900"
+                >
+                  {sub}
+                </p>
+              ))}
+            </div>
           </div>
         ))}
       </div>

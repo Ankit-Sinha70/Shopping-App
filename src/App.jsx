@@ -22,6 +22,8 @@ import OrdersPage from "./pages/OrdersPage";
 import OrderDetails from "./pages/OrderDetails";
 import WishList from "./pages/WishList";
 import ViewAllPage from "./pages/ViewAllPage";
+import Kids from "./pages/Kids";
+import Men from "./pages/Men";
 
 function App() {
   const location = useLocation();
@@ -87,6 +89,8 @@ function App() {
           <Route path="/orderDetails" element={<OrderDetails />} />
           <Route path="/wishlist" element={<WishList />} />
           <Route path="/viewAll" element={<ViewAllPage />} />
+          <Route path="/kids" element={<Kids />} />
+          <Route path="/men" element={<Men />} />
         </Routes>
       </div>
 
