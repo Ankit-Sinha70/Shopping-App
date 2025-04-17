@@ -114,7 +114,7 @@ const Sale = () => {
                     {product.price}
                   </span>
                 </div>
-                <button className="mt-3 w-full bg-pink-500 text-white py-2 rounded hover:bg-pink-600 transition">
+                <button className="mt-3 w-full bg-gray-500 text-white py-2 rounded hover:bg-gray-600 transition">
                   Add to Cart
                 </button>
               </div>

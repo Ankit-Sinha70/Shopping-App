@@ -61,7 +61,7 @@ const Men = () => {
   return (
     <div className="px-4 py-8 max-w-screen-xl mx-auto">
       {/* Hero */}
-      <div className="bg-blue-100 rounded-xl p-6 text-center mb-8">
+      <div className="bg-gradient-to-r from-pink-200 to-yellow-100 p-8 rounded-xl text-center mb-10">
         <h1 className="text-3xl font-bold text-gray-700">Men's Collection</h1>
         <p className="text-gray-600 mt-2">
           Classic & trendy styles crafted for modern men.

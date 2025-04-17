@@ -259,7 +259,7 @@ const ProfilePage = () => {
   };
 
   const WebLayout = () => (
-    <div className="mb-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border border-gray-300 rounded-xl shadow-md bg-gray-50">
+    <div className="m-5 bg-gray-50 mb-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border border-gray-100 rounded-xl shadow-md">
       {/* Mobile Navigation - Horizontally Scrollable Tabs */}
       <nav className="md:hidden p-3 mb-4 overflow-x-auto flex whitespace-nowrap">
         <a

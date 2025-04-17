@@ -22,7 +22,7 @@ export default function Navbar() {
   return (
     <nav className="relative">
       {/* Main Navbar */}
-      <div className="flex justify-between items-center px-4 sm:px-8 py-4 bg-gray-200 shadow-md gap-9">
+      <div className="flex justify-between items-center px-4 sm:px-8 py-4 bg-gradient-to-r from-pink-200 to-yellow-100 p-8 rounded-xl text-center mb-10 gap-15">
         <div className="flex items-center">
           {/* Mobile Menu Button */}
           <button className="mr-2 md:hidden" onClick={toggleMenu}>
@@ -38,7 +38,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex md:ml-auto lg:ml-auto justify-end gap-10 lg:gap-12 text-gray-400">
+        <div className="hidden md:flex md:ml-auto lg:ml-auto justify-end lg:gap-12 text-gray-400 gap-9">
           {navLinks.map((link) => (
             <Link
               key={link.to}
