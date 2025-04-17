@@ -24,6 +24,7 @@ import WishList from "./pages/WishList";
 import ViewAllPage from "./pages/ViewAllPage";
 import Kids from "./pages/Kids";
 import Men from "./pages/Men";
+import Sale from "./pages/Sale";
 
 function App() {
   const location = useLocation();
@@ -91,6 +92,7 @@ function App() {
           <Route path="/viewAll" element={<ViewAllPage />} />
           <Route path="/kids" element={<Kids />} />
           <Route path="/men" element={<Men />} />
+          <Route path="/sale" element={<Sale />} />
         </Routes>
       </div>
 
