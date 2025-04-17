@@ -82,6 +82,14 @@ const Kids = () => {
       category: "Shoes",
       subcategory: "Running",
     },
+    {
+      id: 10,
+      name: "Running Shoes",
+      price: "$18.00",
+      image: Shoes1,
+      category: "Shoes",
+      subcategory: "Running",
+    },
   ];
   
 
