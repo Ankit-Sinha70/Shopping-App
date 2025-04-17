@@ -132,7 +132,7 @@ const ProfilePage = () => {
     }
 
     return (
-      <div className="flex flex-col h-full bg-gray-50">
+      <div className="flex flex-col h-full bg-gray-100">
         <div className="flex justify-between items-center p-4">
           <button
             onClick={() => navigate("/home")}
@@ -259,9 +259,9 @@ const ProfilePage = () => {
   };
 
   const WebLayout = () => (
-    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div className="mb-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border border-gray-300 rounded-xl shadow-md bg-gray-50">
       {/* Mobile Navigation - Horizontally Scrollable Tabs */}
-      <nav className="md:hidden pb-3 mb-4 overflow-x-auto flex whitespace-nowrap">
+      <nav className="md:hidden p-3 mb-4 overflow-x-auto flex whitespace-nowrap">
         <a
           href="#"
           className={`mr-4 pb-2 text-sm flex-shrink-0 ${

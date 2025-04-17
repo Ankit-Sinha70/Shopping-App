@@ -22,7 +22,7 @@ export default function Navbar() {
   return (
     <nav className="relative">
       {/* Main Navbar */}
-      <div className="flex justify-between items-center px-4 sm:px-8 py-4 bg-white shadow-md gap-9">
+      <div className="flex justify-between items-center px-4 sm:px-8 py-4 bg-gray-200 shadow-md gap-9">
         <div className="flex items-center">
           {/* Mobile Menu Button */}
           <button className="mr-2 md:hidden" onClick={toggleMenu}>
