@@ -20,9 +20,9 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="relative">
+    <nav className="sticky top-0 z-50">
       {/* Main Navbar */}
-      <div className="flex justify-between items-center px-4 sm:px-8 py-4 bg-gradient-to-r from-pink-200 to-yellow-100 p-8 rounded-xl text-center mb-10 gap-15">
+      <div className="flex justify-between items-center px-4 sm:px-8 py-6 bg-gradient-to-r from-pink-200 to-yellow-100  rounded-xl text-center mb-10 gap-15">
         <div className="flex items-center">
           {/* Mobile Menu Button */}
           <button className="mr-2 md:hidden" onClick={toggleMenu}>

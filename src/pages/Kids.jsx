@@ -122,7 +122,7 @@ const Kids = () => {
   });
 
   return (
-    <div className="px-4 py-8 max-w-screen-xl mx-auto">
+    <div className="px-4 max-w-screen-xl mx-auto">
       {/* Hero */}
       <div className="bg-gradient-to-r from-pink-200 to-yellow-100 p-8 rounded-xl text-center mb-10">
         <h1 className="text-3xl font-bold text-gray-600">Kids Collection</h1>

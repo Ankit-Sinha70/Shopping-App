@@ -60,9 +60,6 @@ const CartPage = () => {
     },
   ]);
 
-  // const touchStartX = useRef(0);
-  // const currentItemId = useRef(null);
-
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -91,48 +88,6 @@ const CartPage = () => {
       )
     );
   };
-
-  // const handleTouchStart = (e, id) => {
-  //   touchStartX.current = e.touches[0].clientX;
-  //   currentItemId.current = id;
-  // };
-
-  // const handleTouchMove = (e) => {
-  //   if (!currentItemId.current) return;
-  //   const touchX = e.touches[0].clientX;
-  //   const diff = touchStartX.current - touchX;
-  //   const newOffset = Math.max(0, Math.min(80, diff));
-  //   setCartItems(
-  //     cartItems.map((item) =>
-  //       item.id === currentItemId.current
-  //         ? { ...item, slideOffset: newOffset }
-  //         : item
-  //     )
-  //   );
-  // };
-
-  // const handleTouchEnd = () => {
-  //   if (!currentItemId.current) return;
-
-  //   setCartItems(
-  //     cartItems.map((item) => {
-  //       if (item.id === currentItemId.current) {
-  //         const newOffset = item.slideOffset > 40 ? 80 : 0;
-  //         return { ...item, slideOffset: newOffset };
-  //       }
-  //       return item;
-  //     })
-  //   );
-  //   currentItemId.current = null;
-  // };
-
-  // const resetAllSlides = (exceptId) => {
-  //   setCartItems(
-  //     cartItems.map((item) =>
-  //       item.id !== exceptId ? { ...item, slideOffset: 0 } : item
-  //     )
-  //   );
-  // };
 
   const deleteItem = (id) => {
     setCartItems(cartItems.filter((item) => item.id !== id));
@@ -179,21 +134,6 @@ const CartPage = () => {
                 "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
             }}
           >
-            {/* Slide container */}
-            {/* <div
-              style={{
-                transform: `translateX(-${item.slideOffset}px)`,
-                transition:
-                  currentItemId.current === item.id
-                    ? "none"
-                    : "transform 0.3s ease",
-              }}
-              onTouchStart={(e) => handleTouchStart(e, item.id)}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-              onClick={() => resetAllSlides(item.id)}
-              className="relative rounded-3xl"
-            > */}
             <Card className="flex items-center bg-white p-4 rounded-xl shadow-sm">
               <img
                 src={item.image}
@@ -229,23 +169,6 @@ const CartPage = () => {
                 </button>
               </div>
             </Card>
-            {/* </div> */}
-
-            {/* Delete button that appears when sliding */}
-            {/* <div
-              className="absolute top-0 right-0 bottom-0 flex items-center justify-center bg-red-500 text-white rounded-r-xl"
-              style={{
-                width: "80px",
-                transform: `translateX(${80 - item.slideOffset}px)`,
-                transition:
-                  currentItemId.current === item.id
-                    ? "none"
-                    : "transform 0.1s ease",
-              }}
-              onClick={() => deleteItem(item.id)}
-            >
-              <Trash2 size={24} />
-            </div> */}
           </div>
         ))}
       </div>
@@ -387,7 +310,7 @@ const CartPage = () => {
               placeholder="Enter Promo Or Gift Card"
               className="flex-1 p-3 border border-gray-300 rounded-l-lg focus:outline-none"
             />
-            <button className="bg-black text-white px-4 py-3 rounded-r-lg">
+            <button className=" bg-gray-600 hover:bg-gray-500 text-white px-4 py-3 rounded-r-lg">
               Apply
             </button>
           </div>
@@ -407,7 +330,7 @@ const CartPage = () => {
             <span>Total</span>
             <span>${total.toFixed(2)}</span>
           </div>
-          <button className="w-full bg-black text-white py-3 rounded-full mt-4 flex items-center justify-center gap-2 leading-10">
+          <button className= "w-full bg-gray-600 text-white py-2 rounded-4xl hover:bg-gray-500 transition mt-4 flex items-center justify-center gap-2 leading-10">
             <ShoppingCart /> Checkout
           </button>
         </div>

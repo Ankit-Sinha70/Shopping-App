@@ -55,10 +55,10 @@ const Sale = () => {
   };
 
   return (
-    <div className="px-4 py-8 max-w-screen-xl mx-auto">
+    <div className="px-4 max-w-screen-xl mx-auto">
       {/* Hero */}
-      <div className="bg-gradient-to-r from-pink-200 to-yellow-100 p-8 rounded-xl text-center mb-10">
-        <h2 className="text-4xl font-bold text-gray-800">Big Sale is ON!</h2>
+      <div className="bg-gradient-to-r from-pink-200 to-yellow-100 p-6 rounded-xl text-center mb-10">
+        <h2 className="text-4xl font-bold text-gray-600">Big Sale is ON!</h2>
         <p className="mt-2 text-gray-600">
           Get up to 50% off on your favorite styles. Limited time only!
         </p>
@@ -85,7 +85,10 @@ const Sale = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => {
-            const discount = getDiscountPercent(product.price, product.salePrice);
+            const discount = getDiscountPercent(
+              product.price,
+              product.salePrice
+            );
             return (
               <div
                 key={product.id}
