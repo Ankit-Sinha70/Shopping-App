@@ -29,19 +29,20 @@ import Sale from "./pages/Sale";
 function App() {
   const location = useLocation();
   const [isMobile, setIsMobile] = useState(false);
-
+  
   useEffect(() => {
     const checkIsMobile = () => setIsMobile(window.innerWidth < 768);
     checkIsMobile();
     window.addEventListener("resize", checkIsMobile);
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
+  const currentPath = location.pathname.toLowerCase();
 
   // Paths where the Navbar should not appear
   const hideNavbarRoutes = [
     "/",
     "/login",
-    "/signUp",
+    "/signup",
     "/welcomeScreen2",
     "/success",
     "/placeOrder",
@@ -49,6 +50,7 @@ function App() {
 
   // Paths where the Footer should not appear
   const hideFooterRoutes = [
+    "/login",
     "/placeOrder",
     "/payments",
     "/settings",
@@ -60,12 +62,13 @@ function App() {
     "/orderDetails",
     "/wishlist",
     "/payment-success",
+    "/signup",
   ];
 
   return (
     <div className="min-h-screen flex flex-col">
       {/* Conditionally render Navbar */}
-      {!isMobile && !hideNavbarRoutes.includes(location.pathname) && <Navbar />}
+      {!isMobile && !hideNavbarRoutes.includes(currentPath) && <Navbar />}
 
       {/* Main Content */}
       <div className="flex-grow">
@@ -74,7 +77,7 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/women" element={<Women />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/signUp" element={<SignUpPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/welcomeScreen2" element={<WelcomeScreen2 />} />
@@ -97,7 +100,7 @@ function App() {
       </div>
 
       {/* Conditionally render Footer */}
-      {!hideFooterRoutes.includes(location.pathname) && <Footer />}
+      {!hideFooterRoutes.includes(currentPath) && <Footer />}
     </div>
   );
 }

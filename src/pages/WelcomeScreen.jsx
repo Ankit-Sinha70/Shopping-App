@@ -39,7 +39,7 @@ const WelcomeScreen = () => {
             Login
           </button>
           <button
-            onClick={() => navigate("/signUp")}
+            onClick={() => navigate("/signup")}
             className="w-64 py-3 border border-lime-400 text-white text-lg font-semibold rounded-full hover:bg-lime-400 hover:text-black transition"
           >
             Sign Up

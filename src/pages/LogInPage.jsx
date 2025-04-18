@@ -14,13 +14,14 @@ const LogInPage = () => {
   };
 
   return (
-    <div className="relative h-screen w-full flex items-center justify-center bg-black overflow-hidden">
+    <div className="relative w-full min-h-[70vh] sm:min-h-[60vh] md:min-h-[50vh] lg:min-h-[40vh] flex items-center justify-center bg-black overflow-hidden">
+
       {/* Background Image with animated gradient overlay */}
       <div className="absolute inset-0 overflow-hidden">
         <img
           src={BackgroundImage}
           alt="Fashion Background"
-          className="w-full h-full object-cover scale-110"
+          className="w-full object-cover scale-110"
           style={{ objectPosition: "center" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50"></div>
@@ -58,7 +59,7 @@ const LogInPage = () => {
             <a
               href="#"
               className="text-lime-300 hover:text-lime-200 transition-colors"
-              onClick={() => navigate("/signUp")}
+              onClick={() => navigate("/signup")}
             >
               Sign Up
             </a>

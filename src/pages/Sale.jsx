@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Tshirt from "../../public/assets/PNG/T-shirt.png";
 import Shoes from "../../public/assets/JPG/shoes.jpg";
+import Tshirt1 from "../../public/assets/JPG/tshirt.jpg";
 
 const Sale = () => {
   const [selectedTag, setSelectedTag] = useState("All");
@@ -29,7 +30,7 @@ const Sale = () => {
       name: "Casual T-Shirt",
       price: "$18.00",
       salePrice: "$18.00",
-      image: Tshirt,
+      image: Tshirt1,
       tags: ["T-Shirts", "Buy 1 Get 1"],
     },
     {

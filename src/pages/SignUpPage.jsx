@@ -55,25 +55,6 @@ const SignUpPage = () => {
           </a>
         </p>
 
-        {/* Social Login Buttons */}
-        {/* <div className="mt-6 space-y-3">
-          <button className="w-full flex items-center justify-center px-4 py-2.5 sm:py-3 border border-gray-600 rounded-lg text-lime-300 hover:bg-gray-800 transition-colors duration-200 space-x-3">
-            <FaGoogle className="text-lg sm:text-xl" />{" "}
-            <span>Sign Up with Google</span>
-          </button>
-          <button className="w-full flex items-center justify-center px-4 py-2.5 sm:py-3 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors duration-200 space-x-3 text-lime-300">
-            <FaFacebook className="text-lg sm:text-xl" />{" "}
-            <span>Sign Up with Facebook</span>
-          </button>
-        </div> */}
-
-        {/* Divider */}
-        {/* <div className="flex items-center my-6">
-          <div className="flex-grow border-t border-gray-600"></div>
-          <span className="mx-3 text-sm text-gray-400">Or</span>
-          <div className="flex-grow border-t border-gray-600"></div>
-        </div> */}
-
         {/* Email Sign Up */}
         <div className="mt-4 space-y-4">
           <div className="group">
