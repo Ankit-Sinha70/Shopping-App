@@ -29,6 +29,38 @@ import Sale from "./pages/Sale";
 function App() {
   const location = useLocation();
   const [isMobile, setIsMobile] = useState(false);
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart((prevCart) => {
+      const exists = prevCart.find((item) => item.id === product.id);
+      if (exists) {
+        return prevCart.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      } else {
+        return [...prevCart, { ...product, quantity: 1 }];
+      }
+    });
+  };
+
+  const removeFromCart = (id) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
+
+  const updateQuantity = (id, type) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              quantity: type === "inc" ? item.quantity + 1 : Math.max(1, item.quantity - 1),
+            }
+          : item
+      )
+    );
+  };
+
   
   useEffect(() => {
     const checkIsMobile = () => setIsMobile(window.innerWidth < 768);
@@ -73,10 +105,10 @@ function App() {
       {/* Main Content */}
       <div className="flex-grow">
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home addToCart={addToCart}  />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/women" element={<Women />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="/cart" element={<CartPage cart={cart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="/login" element={<LogInPage />} />

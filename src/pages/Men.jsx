@@ -5,6 +5,7 @@ import Shoes from "../../public/assets/JPG/shoes.jpg";
 
 const Men = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [cartItems, setCartItems] = useState([]); // Local cart state
 
   const categories = ["All", "T-Shirts", "Hoodies", "Shoes", "Accessories"];
 
@@ -58,8 +59,33 @@ const Men = () => {
       ? menProducts
       : menProducts.filter((product) => product.category === selectedCategory);
 
+  const addToCart = (product) => {
+    // Check if item already exists in cart
+    const isInCart = cartItems.find((item) => item.id === product.id);
+
+    if (isInCart) {
+      // If item exists, increase quantity
+      const updatedCart = cartItems.map((item) =>
+        item.id === product.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+      setCartItems(updatedCart);
+    } else {
+      // If not, add new item
+      setCartItems([...cartItems, { ...product, quantity: 1 }]);
+    }
+  };
+
   return (
     <div className="px-4 max-w-screen-xl mx-auto">
+      {/* Cart Count Badge */}
+      <div className="text-right mb-4">
+        <span className="bg-gray-700 text-white px-3 py-1 rounded-full">
+          Cart Items: {cartItems.length}
+        </span>
+      </div>
+
       {/* Hero */}
       <div className="bg-gradient-to-r from-pink-200 to-yellow-100 p-8 rounded-xl text-center mb-10">
         <h1 className="text-3xl font-bold text-gray-700">Men's Collection</h1>
@@ -102,7 +128,10 @@ const Men = () => {
                 {product.name}
               </h2>
               <p className="text-black font-medium">{product.price}</p>
-              <button className="mt-2 w-full bg-gray-700 text-white py-2 rounded hover:bg-gray-800 transition">
+              <button
+                className="mt-2 w-full bg-gray-700 text-white py-2 rounded hover:bg-gray-800 transition"
+                onClick={() => addToCart(product)}
+              >
                 Add to Cart
               </button>
             </div>
