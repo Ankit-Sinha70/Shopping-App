@@ -11,6 +11,7 @@ export default function Navbar() {
   };
 
   const navLinks = [
+    { to: "/google-sheet-action", label: "Google Sheet Action" },
     { to: "/home", label: "Home" },
     { to: "/men", label: "Men" },
     { to: "/women", label: "Women" },
