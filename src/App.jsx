@@ -25,7 +25,6 @@ import ViewAllPage from "./pages/ViewAllPage";
 import Kids from "./pages/Kids";
 import Men from "./pages/Men";
 import Sale from "./pages/Sale";
-import GoogleSheetAction from "./components/GoogleSheetAction";
 
 function App() {
   const location = useLocation();
@@ -129,7 +128,6 @@ function App() {
           <Route path="/kids" element={<Kids />} />
           <Route path="/men" element={<Men />} />
           <Route path="/sale" element={<Sale />} />
-          <Route path="/google-sheet-action" element={<GoogleSheetAction />} />
         </Routes>
       </div>
 
